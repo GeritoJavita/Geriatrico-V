@@ -1,5 +1,5 @@
-# Geriatrico-V
-#  Sistema de Gestión de Información e Inventario Web
+<h1 align="center">Geriatrico-V</h1> 
+<h3 align="center">Sistema de Gestión de Información e Inventario Web</h3> 
 
 Este proyecto es una aplicación web desarrollada con **Laravel**, pensada para optimizar la administración de inventarios y centralizar la gestión de información en organizaciones de cualquier tamaño.  
 
