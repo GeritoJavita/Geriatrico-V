@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+// Ruta para mostrar index principal
+Route::get('/', function () {
+    return view('index');
+})->name('home');
 // Ruta para mostrar formulario de login
-Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
 // Ruta para procesar login
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
