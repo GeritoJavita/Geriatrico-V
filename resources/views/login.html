@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+</head>
+
+<body>
+    <div id="main-navbar"></div>
+    
+    <div class="divMajor">
+        <div class="divlogin">
+            <form class="form-login" id="form-validation" action="" novalidate>
+                <div class="contform">
+                    <h2>Bienvenido Usuario</h2>
+                    <div class="div-admin">
+                        <a href="Admin_start.php"><img src="./img/admin.png" class="icon-hover"></a>
+                    </div>
+
+                    <div class="form-group">
+                        <span><a class="title-short">Correo</a></span>
+                        <input type="text" name="correo" id="correo" placeholder="Digite su correo" required>
+                        <small class="small-red correo-error">*</small>
+                    </div>
+
+                    <div class="form-group">
+                        <span><a class="title-short">Contraseña</a></span>
+                        <input type="password" id="password" name="contraseña" placeholder="Digite su contraseña" required>
+                        <small class="small-red">*</small>
+                    </div>
+
+                    <div class="divlinks">
+                        <a href="#Recover_password.php" class="link">Olvidé mi contraseña</a>
+                    </div>
+
+                    <div class="buttonlogin">
+                        <button class="inicio" type="submit">Iniciar Sesión</button>
+                    </div>
+
+                    <div class="divlinks-nouser">
+                        <a class="linktxt">¿No tienes usuario?</a>
+                        <a href="User_Register.html" class="link"><strong>Regístrate</strong></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
