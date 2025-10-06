@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS externo -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @vite(['resources/css/style.css', 'resources/js/app.js'])
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-brand">
             <i class="fa-solid fa-hand-holding-heart"></i>
-            Geriátrico <span>San Rafael</span>
+            Geriátrico <span>Angeles V</span>
         </div>
         <div class="navbar-links">
             <a href="#inicio"><i class="fa-solid fa-house"></i>Inicio</a>
@@ -25,7 +25,7 @@
             <a href="#servicios"><i class="fa-solid fa-stethoscope"></i>Servicios</a>
             <a href="#valores"><i class="fa-solid fa-heart"></i>Valores</a>
             <a href="#contacto"><i class="fa-solid fa-envelope"></i>Contacto</a>
-            <a href="{{ route('login') }}" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i>Ingresar</a>
+            <a href="{{ route('logins') }}" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i>Ingresar</a>
         </div>
     </nav>
 
@@ -126,7 +126,7 @@
             </div>
         </div>
         <div class="copyright">
-            &copy; {{ date('Y') }} Geriátrico San Rafael. Todos los derechos reservados.
+            &copy; {{ date('Y') }} Geriátrico Angeles V. Todos los derechos reservados.
         </div>
     </footer>
 </body>
