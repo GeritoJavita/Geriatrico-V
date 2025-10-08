@@ -13,6 +13,7 @@
     min-height: 100vh;
     background: var(--light-bg);
     font-family: 'Montserrat', sans-serif;
+    position: relative;
 }
 
 .login-image {
@@ -37,15 +38,17 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 3rem;
     background: var(--primary-beige);
+    position: relative;
 }
 
-.login-box {
+.login-content {
     width: 100%;
     max-width: 400px;
+    margin: auto;
 }
 
 .login-title {
@@ -100,6 +103,25 @@
     background: var(--primary-beige);
 }
 
+.forgot-password {
+    text-align: right;
+    margin-bottom: 2rem;
+    margin-top: -0.5rem;
+}
+
+.forgot-password a {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.forgot-password a:hover {
+    color: var(--primary-black);
+    text-decoration: underline;
+}
+
 .btn-login-form {
     width: 100%;
     padding: 1.1rem;
@@ -137,6 +159,21 @@
     box-sizing: border-box;
 }
 
+.login-footer {
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0 0 0;
+    margin-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.login-footer p {
+    color: var(--dark-text);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
     .login-page {
@@ -157,10 +194,16 @@
     .login-container {
         padding: 2rem 1.5rem;
         flex: none;
+        min-height: calc(100vh - 300px);
     }
     
-    .login-box {
+    .login-content {
         max-width: 350px;
+    }
+    
+    .login-footer {
+        padding: 1rem 0 0 0;
+        margin-top: 1.5rem;
     }
 }
 
@@ -193,10 +236,19 @@
     .btn-login-form {
         padding: 1rem;
     }
+    
+    .forgot-password {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .login-footer p {
+        font-size: 0.8rem;
+    }
 }
 
 /* Animaciones suaves */
-.login-container {
+.login-content {
     animation: fadeInUp 0.8s ease-out;
 }
 
