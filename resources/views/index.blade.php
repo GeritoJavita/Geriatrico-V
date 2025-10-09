@@ -17,7 +17,7 @@
     <nav class="navbar">
         <div class="navbar-brand">
             <i class="fa-solid fa-hand-holding-heart"></i>
-            Geriátrico <span>San Rafael</span>
+            Geriátrico <span>Angeles V</span>
         </div>
         <div class="navbar-links">
             <a href="#inicio"><i class="fa-solid fa-house"></i>Inicio</a>
