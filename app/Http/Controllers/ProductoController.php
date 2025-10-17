@@ -34,7 +34,7 @@ class ProductoController extends Controller
         'stock' => 'required|integer|min:0',
     ]);
 
-    // 1️⃣ Crear el producto
+    // 1 Crear el producto
     $producto = Producto::create([
         'nombre' => $request->nombre,
         'precio' => $request->precio,
@@ -47,7 +47,7 @@ class ProductoController extends Controller
         'presentacion' => $request->presentacion,
     ]);
 
-    // 2️⃣ Crear inventario asociado al producto
+    // Crear inventario asociado al producto
     Inventario::create([
         'id_producto' => $producto->id,
         'cantidad' => $request->cantidad,
@@ -63,7 +63,7 @@ public function destroy($id)
 {
     $producto = Producto::findOrFail($id);
 
-    // Si quieres eliminar también su inventario asociado:
+    //  eliminar también su inventario asociado:
     if ($producto->inventario) {
         $producto->inventario->delete();
     }
