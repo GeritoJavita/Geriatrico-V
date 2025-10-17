@@ -23,11 +23,15 @@ class Producto extends Model
         'proveedor_id'
     ];
 
-    // Relación con proveedor
-    /*public function proveedor()
+    public function categoria()
     {
-        return $this->belongsTo(Proveedores::class, 'proveedor_id');
-    }*/
+        return $this->belongsTo(CategoriaProducto::class, 'categoria_id');
+    }
+
+    public function proveedor()
+    {
+        return $this->belongsTo(Proveedor::class, 'proveedor_id');
+    }
     
     public function inventario()
 {

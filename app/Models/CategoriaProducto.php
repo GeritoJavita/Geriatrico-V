@@ -9,5 +9,11 @@ class CategoriaProducto extends Model
 {
     use HasFactory;
 
-    protected $table = 'Categoria_productos'; // Nombre exacto de la tabla
+    protected $table = 'categoria_productos';
+    protected $fillable = ['nombre'];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'categoria_id');
+    }
 }

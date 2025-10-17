@@ -1,4 +1,21 @@
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.btn {
+    text-decoration: none;
+
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    transition: 0.3s;
+}
+
+
+
         :root {
             --primary-black: #32b4a8;
             --primary-beige: #ffffff;

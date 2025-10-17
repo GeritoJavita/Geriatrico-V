@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ProductoController;
 // Ruta para mostrar index principal
 Route::get('/', function () {
     return view('index');
@@ -23,4 +24,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
+});
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('producto', ProductoController::class);
 });
