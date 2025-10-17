@@ -26,13 +26,13 @@
                 <form method="POST" action="{{ route('login.post') }}" class="login-form">
                     @csrf
                     <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" name="email" id="email" required autofocus value="{{ old('email') }}">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="correo" name="correo" id="correo" required autofocus value="{{ old('correo') }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password" id="password" required>
+                        <label for="clave">Contraseña</label>
+                        <input type="clave" name="clave" id="clave" required>
                     </div>
 
                     <div class="forgot-password">

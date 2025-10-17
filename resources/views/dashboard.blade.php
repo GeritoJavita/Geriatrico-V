@@ -25,7 +25,7 @@
         <div class="header">
             <h1>Panel de Control</h1>
             <div class="user-info">
-                <span>{{ Auth::user()->name }}</span>
+                <span>{{ Auth::user()->nombre }}</span>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit"><i class="fas fa-sign-out-alt"></i> Salir</button>
@@ -74,20 +74,20 @@
         </div>
     </div>
 
-    <!-- Toast Notificación -->
+    
+    <!-- Toast Notificación  Toca revisar esta notificacion
     <div class="toast" id="loginToast">
         <i class="fas fa-check-circle"></i> Sesión iniciada correctamente
     </div>
 
-    <script>
-        // Mostrar notificación al cargar si hay sesión exitosa
-        document.addEventListener('DOMContentLoaded', () => {
-            @if (session('success'))
-                const toast = document.getElementById('loginToast');
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 4000);
-            @endif
-        });
-    </script>
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        @if (session('success'))
+            const toast = document.getElementById('loginToast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4000);
+        @endif
+    });
+</script>-->
 </body>
 </html>
