@@ -48,8 +48,11 @@
                 </div>
 
                 <div class="card">
-                    <i class="fas fa-boxes"></i>
-                    <h3>Inventario</h3>
+                    
+                   <a href="{{ route('inventario.index') }}" class="{{ request()->is('inventario') ? 'active' : '' }}">
+    <i class="fas fa-boxes"></i> Inventario
+</a>
+
                     <p>Controle los suministros, alimentos y elementos del hogar.</p>
                 </div>
 
