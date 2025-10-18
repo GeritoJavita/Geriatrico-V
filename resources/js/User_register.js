@@ -4,112 +4,100 @@ import { Notyf } from 'notyf';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-            const addform = document.getElementById('form-validation');
-            const passwordInput = document.getElementById('password');
-            
-            const pwMsg = document.getElementById('password-msg');
-            const teMsg = document.getElementById('telefono-msg')
+    const addform = document.getElementById('form-validation');
+    const passwordInput = document.getElementById('password');
+    const pwMsg = document.getElementById('password-msg');
+    const correoInput = document.getElementById('correo');
+    const correoError = document.querySelector('.correo-error');
+    const telefonoInput = document.getElementById('telefono');
+    const telefonoError = document.querySelector('.telefono-error');
 
-            const correoInput = document.getElementById('correo');
-            const correoError = document.querySelector('.correo-error');
-            const telefonoError = document.querySelector('.telefono-error');
-            const telefonoInput =document.getElementById('telefono');
-            /* === Validación de contraseña en vivo === */
-            passwordInput.addEventListener('input', () => {
-                
-                if (passwordInput.value.length >= 8 ) {
-                    pwMsg.classList.add('valid');
-                    pwMsg.textContent = 'Contraseña válida';
-                } else {
-                    pwMsg.classList.remove('valid');
-                    pwMsg.textContent = 'Mínimo 8 caracteres';
-                }
+    const notyf = new Notyf({
+        duration: 3500,
+        position: { x: 'center', y: 'top' },
+    });
 
-            });
-            
-       
-            addform.addEventListener('submit', (e) => { 
-                var notyf = new Notyf({
-                    duration: 3500,
-                    position:{
-                        x:'center',
-                        y:'top'
-                    },
-                });
-                e.preventDefault();
-                correoError.style.display = 'none';
-                correoError.textContent = '';
-                telefonoError.style.display = 'none';
-                telefonoError.textContent = '';
-                const correoRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com)$/;
-                const correoTrim = correoInput.value.trim();
+    // Validación de contraseña en vivo
+    passwordInput.addEventListener('input', () => {
+        if (passwordInput.value.length >= 8) {
+            pwMsg.classList.add('valid');
+            pwMsg.textContent = 'Contraseña válida';
+        } else {
+            pwMsg.classList.remove('valid');
+            pwMsg.textContent = 'Mínimo 8 caracteres';
+        }
+    });
 
-                let isValid = true;
+    addform.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-                /* 1. Valida campo e-mail */
-                if (!correoRegex.test(correoTrim)) {
-                    correoError.style.display = 'inline';
-                    correoError.textContent = 'Correo no válido: usa Gmail, Hotmail u Outlook.';
-                    isValid = false;
-                }
-               
-                /* 2. Valida el resto con la API HTML5 */
-                if (!addform.checkValidity()) {
-                    addform.classList.add('was-validated');
-                    isValid = false;
-                }
-                //compruebo que la contraseña no sea menor a 8 digitos
-                if(passwordInput.value.length < 8){
-                    isValid = false;
-                }
+        correoError.style.display = 'none';
+        correoError.textContent = '';
+        telefonoError.style.display = 'none';
+        telefonoError.textContent = '';
 
-                if(telefonoInput.value.length<7||telefonoInput.value.length>15){
-                    telefonoError.style.display = 'inline';
-                    telefonoError.textContent='Debe ingresar telefono(7 dígitos) o celular(10 dígitos)';
-                    isValid=false;
-                }
+        const correoRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com)$/;
+        const correoTrim = correoInput.value.trim();
+        let isValid = true;
 
-                if(isValid==false){
-                    notyf.error('Datos faltantes o formato incorrecto');
-                }
-                 
-                if (!isValid) return;  //evalua si es false 
-                // aquí podrías hacer fetch(...) o form.submit();
-                const datos = new FormData(addform);
-                datos.append('accion','insertar');
+        // Validación correo
+        if (!correoRegex.test(correoTrim)) {
+            correoError.style.display = 'inline';
+            correoError.textContent = 'Correo no válido: usa Gmail, Hotmail u Outlook.';
+            isValid = false;
+        }
 
-                fetch('../Controlador/Controlador_cliente.php', {
-                    method: 'POST',
-                    body: datos 
-                })
-                    .then(response=>{
-                        if(!response.ok){
-                            throw new Error ('error al enviar los datos');
-                        }
-                        return response.text();
-                    })
-                    .then(data=>{
-                        console.log("Respuesta del servidor:", data);
+        // Validación HTML5 y contraseña
+        if (!addform.checkValidity() || passwordInput.value.length < 8) {
+            addform.classList.add('was-validated');
+            isValid = false;
+        }
 
-                        if(data.includes("Usuario registrado")){
-                            notyf.success("Datos registrados");
-                            setTimeout(() => {  
-                                addform.reset();
-                                addform.classList.remove('was-validated');
-                                window.location.href=("Start_sesion.php");
-                            }, 2000);
-                        }else if(data.includes("El ID o el correo ya están registrados en la base de datos.")){
-                            notyf.error(data);
-                           // addform.reset();//limpia el formulario
-                        }else if(data.includes("Error al registrar")){
-                            notyf.error(data);
-                            alert(data);
-                        }
-                    })
-                    .catch(error=>{
-                        //alert('paila todo '+ error.message);
-                        notyf.error('error inesperado'+error.message);
+        // Validación teléfono
+        if (telefonoInput.value.length < 7 || telefonoInput.value.length > 15) {
+            telefonoError.style.display = 'inline';
+            telefonoError.textContent = 'Debe ingresar teléfono (7 dígitos) o celular (10-15 dígitos)';
+            isValid = false;
+        }
+
+        if (!isValid) {
+            notyf.error('Datos faltantes o formato incorrecto');
+            return;
+        }
+
+        // Preparar FormData
+        const datos = new FormData(addform);
+
+        // Enviar datos al backend
+        fetch('/Send_register', {
+            method: 'POST',
+            body: datos,
+            headers: {
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    notyf.success(data.message);
+                    setTimeout(() => {
                         addform.reset();
-                    });
+                        addform.classList.remove('was-validated');
+                        
+                        setTimeout(()=>{
+                            notyf.success("redirigiendo");
+                        },200);
+                        window.location.href = "/";
+                    }, 2000);
+                } else {
+                    notyf.error(data.message || 'Error desconocido');
+                }
+            })
+            .catch(error => {
+                notyf.error('Error inesperado: ' + error.message);
+
             });
-        });
+    });
+
+});

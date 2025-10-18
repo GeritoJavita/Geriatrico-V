@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="divlinks nouser">
-                            <a href="User_Register.html" class="link">¿No tienes usuario? Regístrate</a>
+                            <a href="{{ route('User_register') }}" class="link">¿No tienes usuario? Regístrate</a>
                         </div>
                     </div>
                 </form>

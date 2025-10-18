@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 // Ruta para mostrar index principal
-Route::get('/', function () {return view('index'); })->name('home');
+Route::get('/', function () {
+    return view('index');
+})->name('home');
 // Ruta para mostrar formulario de login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
@@ -19,6 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 });
 
-Route::get('/logins', [AuthController::class,'logins'])->name('logins');
+Route::get('/logins', [AuthController::class, 'logins'])->name('logins');
 
-Route::get('/User_register', [AuthController::class,'User_register'])->name('User_register');
+Route::get('/User_register', [AuthController::class, 'User_register'])->name('User_register');
+
+Route::post('/Send_register', [AuthController::class, 'send_register'])->name('send_register');

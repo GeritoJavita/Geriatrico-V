@@ -330,3 +330,8 @@ form .form-group {
     margin-left: 10px;
     width: 100%;
 }
+
+.form-group span{
+    text-align: left;
+    margin-bottom: 10px;
+}

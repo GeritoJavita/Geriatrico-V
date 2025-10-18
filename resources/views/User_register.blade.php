@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     @vite(['resources/css/login.css', 'resources/js/User_register.js'])
     <title>Register</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}"><!-- esta mamada es para que reconozca la peticion del fetch por laravel-->
 </head>
 
 <body>
@@ -52,6 +52,10 @@
                     <div class="form-group">
                         <span>Correo</span><input type="text" id="correo" name="correo" placeholder="" required>
                         <small class="small-red correo-error">*</small>
+                    </div>
+                    <div class="form-group">
+                        <span>Dirección</span><input type="text" id="direccion" name="direccion" placeholder="" required>
+                        <small class="small-red">*</small>
                     </div>
                     <div class="form-group">
                         <span>Contraseña</span><input id="password" type="password" name="contraseña" placeholder=""
