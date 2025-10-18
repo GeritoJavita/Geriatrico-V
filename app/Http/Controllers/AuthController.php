@@ -28,6 +28,8 @@ class AuthController extends Controller
         }
 
         return back()->withErrors(['correo' => 'Credenciales inválidas']);
+        
+
     }
 
     public function logout()

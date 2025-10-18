@@ -6,13 +6,14 @@
     <title>Panel de Administración - Hogar Geriátrico</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <script src="https://kit.fontawesome.com/a2e0b5a52a.js" crossorigin="anonymous"></script>
-    link
+
 </head>
 <body>
     <div class="sidebar">
         <h2><i class="fas fa-clinic-medical"></i> Hogar <span>Geriátrico</span></h2>
         <div class="menu">
-            <a href="#" class="active"><i class="fas fa-users"></i> Pacientes</a>
+             <a href="#" class="active"><i class="fas fa-users"></i> Panel de Control</a>
+            <a href="#" ><i class="fas fa-users"></i> Pacientes</a>
             <a href="#"><i class="fas fa-user-nurse"></i> Colaboradores</a>
             <a href="#"><i class="fas fa-pills"></i> Medicamentos</a>
             <a href="#"><i class="fas fa-box"></i> Inventario</a>
