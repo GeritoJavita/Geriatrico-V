@@ -1,4 +1,4 @@
- 
+
 a {
     text-decoration: none;
     color: inherit;
@@ -13,7 +13,10 @@ a.btn {
     border: none;
     transition: 0.3s;
 }
- :root {
+
+
+
+        :root {
             --primary-black: #32b4a8;
             --primary-beige: #ffffff;
             --primary-orange: #0097b2;
@@ -72,7 +75,7 @@ a.btn {
             margin-right: 10px;
         }
 
-        /* ---- Header ---- */
+        /* ---- Main ---- */
         .main {
             flex: 1;
             display: flex;
@@ -115,67 +118,65 @@ a.btn {
             color: white;
         }
 
-        /* ---- Dashboard Content ---- */
+        /* ---- Inventory Content ---- */
         .dashboard-content {
             padding: 2rem;
             overflow-y: auto;
             flex: 1;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 2rem;
+        .inventory-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
         }
 
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card i {
-            font-size: 2.5rem;
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
+        .inventory-header h2 {
             color: var(--primary-black);
-            margin-bottom: 0.5rem;
         }
 
-        .card p {
-            color: var(--dark-text);
-            font-size: 0.95rem;
+        .btn {
+            background: var(--primary-black);
+            color: var(--primary-beige);
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-left: 10px;
         }
 
-        /* ---- Toast (Notificación) ---- */
-        .toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+        .btn:hover {
+            background: var(--primary-orange);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        th {
             background: var(--primary-black);
             color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.4s ease;
-            z-index: 1000;
         }
 
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0);
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        tr:hover {
+            background: #e0f7f7;
         }
 
         @media (max-width: 768px) {

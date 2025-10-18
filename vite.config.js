@@ -10,7 +10,11 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/login.css',
                 'resources/css/style.css',
-                'resources/js/User_register.js'
+                'resources/js/User_register.js',
+                'resources/js/prodcuto_create.css',
+                'resources/js/inventario.css',
+                'resources/js/dashboard.css',
+                'resources/js/hola.css'
             ],
             refresh: true,
         }),

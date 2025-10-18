@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Hogar Geriátrico</title>
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    @vite(['resources/css/dashboard.css'])
     <script src="https://kit.fontawesome.com/a2e0b5a52a.js" crossorigin="anonymous"></script>
-    link
 </head>
 <body>
     <div class="sidebar">
@@ -48,8 +47,11 @@
                 </div>
 
                 <div class="card">
-                    <i class="fas fa-boxes"></i>
-                    <h3>Inventario</h3>
+                    
+                   <a href="{{ route('inventario.index') }}" class="{{ request()->is('inventario') ? 'active' : '' }}">
+    <i class="fas fa-boxes"></i> Inventario
+</a>
+
                     <p>Controle los suministros, alimentos y elementos del hogar.</p>
                 </div>
 
