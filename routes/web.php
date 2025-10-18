@@ -20,3 +20,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/logins', [AuthController::class,'logins'])->name('logins');
+
+Route::get('/User_register', [AuthController::class,'User_register'])->name('User_register');

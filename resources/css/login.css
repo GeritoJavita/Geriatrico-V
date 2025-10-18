@@ -11,7 +11,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #ccc;
+    background-color: white;
 }
 
 /* Imagenes de backgrounds */
@@ -261,3 +261,72 @@ form .form-group {
 
 }
 
+/*-----------FORMRegister--------------*/
+
+
+.center {
+    position: relative;
+    margin: 0px auto;
+    width: 500px;
+    padding-top: 60px;
+    border-radius: 20px;
+}
+
+.formRegisterUsers{
+    padding: 10px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    background-color: #E2E6E9;
+}
+
+.data-users .contentR input{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(41, 51, 61, 0.5);
+    outline: none;
+}
+.title-form{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+    color: #29333D;
+}
+
+.data-users .contentR{
+    display: relative;
+    margin: 10%;
+    padding: 4px;
+}
+.contentR .form-group{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.form-group .form-group-select{
+    display: flex;
+    justify-content: space-between;
+}
+.data-users .contentR .select_normal{
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+.form-group .form-group-select select{
+    border-radius: 10px;
+    width: 60px;
+    outline: none;
+}
+
+.form-group .form-group-select input{
+    margin-left: 10px;
+    width: 100%;
+}
