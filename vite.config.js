@@ -13,8 +13,7 @@ export default defineConfig({
                 'resources/js/User_register.js',
                 'resources/js/prodcuto_create.css',
                 'resources/js/inventario.css',
-                'resources/js/dashboard.css',
-                'resources/js/hola.css'
+                'resources/js/dashboard.css'
             ],
             refresh: true,
         }),

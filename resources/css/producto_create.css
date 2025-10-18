@@ -58,7 +58,7 @@ body {
     padding: 0.8rem 1rem;
     border-radius: 10px;
     margin-bottom: 0.6rem;
-    transition: background 0.3s, transform 0.2s;
+    transition: 0.3s, transform 0.2s;
 }
 
 .menu a i {
