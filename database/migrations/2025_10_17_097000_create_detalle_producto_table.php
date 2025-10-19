@@ -7,17 +7,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('detalle_productos', function (Blueprint $table) {
+        Schema::create('detalle_producto', function (Blueprint $table) {
             $table->id();
             $table->decimal('subtotal', 10, 2)->nullable();
-            $table->foreignId('id_factura')->nullable()->constrained('facturas');
-            $table->foreignId('id_producto')->nullable()->constrained('productos');
+            $table->foreignId('id_factura')->nullable()->constrained('factura');
+            $table->foreignId('id_producto')->nullable()->constrained('producto');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('detalle_productos');
+        Schema::dropIfExists('detalle_producto');
     }
 };

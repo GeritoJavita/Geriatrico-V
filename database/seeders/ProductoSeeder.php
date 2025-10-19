@@ -9,7 +9,7 @@ class ProductoSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('productos')->insert([
+        DB::table('producto')->insert([
             [
                 'nombre' => 'Paracetamol 500mg',
                 'precio' => 15.50,

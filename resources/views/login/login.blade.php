@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesión</title>
-    @vite(['resources/css/login.css', 'resources/js/app.js'])
+    @vite(['resources/css/login/login.css','resources/js/login/login.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}"><!-- esta mamada es para que reconozca la peticion del fetch por laravel-->
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 
                         <div class="form-group">
                             <span><a class="title-short">Contraseña</a></span>
-                            <input type="password" id="password" name="contraseña" placeholder="Digite su contraseña" required>
+                            <input type="password" id="password" name="password" placeholder="Digite su contraseña" required>
                             <small class="small-red">*</small>
                         </div>
 

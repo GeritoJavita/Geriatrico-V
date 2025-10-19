@@ -9,6 +9,6 @@ class Proveedor extends Model
 {
     use HasFactory;
 
-    protected $table = 'proveedores';
+    protected $table = 'proveedor';
     protected $fillable = ['nombre', 'telefono', 'email', 'direccion'];
 }

@@ -9,7 +9,7 @@ class FacturaSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('facturas')->insert([
+        DB::table('factura')->insert([
             [
                 'precio' => 1550.00,
                 'nombre' => 'Compra Medicamentos Noviembre',
@@ -22,7 +22,7 @@ class FacturaSeeder extends Seeder
                 'nombre' => 'Compra Alimentos',
                 'fecha' => '2025-10-16',
                 'tipo' => 'Compra',
-                'ruta' => '/facturas/fac2.pdf',
+                'ruta' => '/factura/fac2.pdf',
             ],
         ]);
     }

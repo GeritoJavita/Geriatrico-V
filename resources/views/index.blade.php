@@ -25,7 +25,7 @@
             <a href="#servicios"><i class="fa-solid fa-stethoscope"></i>Servicios</a>
             <a href="#valores"><i class="fa-solid fa-heart"></i>Valores</a>
             <a href="#contacto"><i class="fa-solid fa-envelope"></i>Contacto</a>
-            <a href="{{ route('logins') }}" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i>Ingresar</a>
+            <a href="{{ route('login') }}" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i>Ingresar</a>
         </div>
     </nav>
 

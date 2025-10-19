@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Hogar Geriátrico</title>
-    @vite(['resources/css/dashboard.css'])
+    @vite(['resources/css/dashboard/dashboard.css'])
     <script src="https://kit.fontawesome.com/a2e0b5a52a.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="sidebar">
         <h2><i class="fas fa-clinic-medical"></i> Hogar <span>Geriátrico</span></h2>
         <div class="menu">
-             <a href="#" class="active"><i class="fas fa-users"></i> Panel de Control</a>
-            <a href="#" ><i class="fas fa-users"></i> Pacientes</a>
+            <a href="#" class="active"><i class="fas fa-users"></i> Panel de Control</a>
+            <a href="#"><i class="fas fa-users"></i> Pacientes</a>
             <a href="#"><i class="fas fa-user-nurse"></i> Colaboradores</a>
             <a href="#"><i class="fas fa-pills"></i> Medicamentos</a>
             <a href="#"><i class="fas fa-box"></i> Inventario</a>
@@ -25,7 +27,11 @@
         <div class="header">
             <h1>Panel de Control</h1>
             <div class="user-info">
-                <span>{{ Auth::user()->nombre }}</span>
+                @if (Auth::check())
+                <p>Bienvenid@ {{ Auth::user()->nombre }}</p>
+                @else
+                <p>⚠ No hay usuario autenticado</p>
+                @endif
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit"><i class="fas fa-sign-out-alt"></i> Salir</button>
@@ -48,10 +54,10 @@
                 </div>
 
                 <div class="card">
-                    
-                   <a href="{{ route('inventario.index') }}" class="{{ request()->is('inventario') ? 'active' : '' }}">
-    <i class="fas fa-boxes"></i> Inventario
-</a>
+
+                    <a href="{{ route('inventario.index') }}" class="{{ request()->is('inventario') ? 'active' : '' }}">
+                        <i class="fas fa-boxes"></i> Inventario
+                    </a>
 
                     <p>Controle los suministros, alimentos y elementos del hogar.</p>
                 </div>
@@ -77,7 +83,7 @@
         </div>
     </div>
 
-    
+
     <!-- Toast Notificación  Toca revisar esta notificacion
     <div class="toast" id="loginToast">
         <i class="fas fa-check-circle"></i> Sesión iniciada correctamente
@@ -93,4 +99,5 @@
     });
 </script>-->
 </body>
+
 </html>

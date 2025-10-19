@@ -1,4 +1,4 @@
-import './bootstrap';
+import '../bootstrap';
 import 'notyf/notyf.min.css';
 import { Notyf } from 'notyf';
 

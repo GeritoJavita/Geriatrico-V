@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/estilo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    @vite(['resources/css/login.css', 'resources/js/User_register.js'])
+    @vite(['resources/css/login/login.css', 'resources/js/login/User_register.js'])
     <title>Register</title>
     <meta name="csrf-token" content="{{ csrf_token() }}"><!-- esta mamada es para que reconozca la peticion del fetch por laravel-->
 </head>
@@ -58,7 +58,7 @@
                         <small class="small-red">*</small>
                     </div>
                     <div class="form-group">
-                        <span>Contraseña</span><input id="password" type="password" name="contraseña" placeholder=""
+                        <span>Contraseña</span><input id="password" type="password" name="password" placeholder=""
                             required><small id="password-msg">Mínimo 8 carácteres</small>
                     </div>
 

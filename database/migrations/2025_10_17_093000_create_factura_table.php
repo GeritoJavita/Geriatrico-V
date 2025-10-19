@@ -7,7 +7,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('facturas', function (Blueprint $table) {
+        Schema::create('factura', function (Blueprint $table) {
             $table->id();
             $table->decimal('precio', 10, 2);
             $table->string('nombre', 100)->nullable();
@@ -20,6 +20,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('facturas');
+        Schema::dropIfExists('factura');
     }
 };

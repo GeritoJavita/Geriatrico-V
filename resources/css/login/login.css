@@ -41,7 +41,7 @@ body {
 /* div para el panel del login*/
 .divMajor {
     display: flex;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/Login_image.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/resources/assets/Login_image.jpeg");
     background-size:cover;      
     background-position: center; 
     background-repeat: no-repeat;

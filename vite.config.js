@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
     plugins: [
@@ -8,23 +7,23 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/css/login.css',
+                'resources/css/login/login.css',
                 'resources/css/style.css',
-                'resources/js/User_register.js',
-                'resources/js/prodcuto_create.css',
-                'resources/js/inventario.css',
-                'resources/js/dashboard.css'
+                'resources/js/login/User_register.js',
+                'resources/css/producto/producto_create.css',
+                'resources/css/inventario/inventario.css',
+                'resources/css/dashboard/dashboard.css',
+                'resources/js/login/login.js',
             ],
             refresh: true,
         }),
-        tailwindcss(),
     ],
     server: {
-        host: '0.0.0.0',  // escucha desde fuera del contenedor
+        host: '0.0.0.0',
         port: 5173,
         strictPort: true,
         hmr: {
-            host: 'localhost', // o la IP de tu máquina host si no funciona localhost
+            host: 'localhost',
             port: 5173,
         },
     },

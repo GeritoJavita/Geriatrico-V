@@ -7,7 +7,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('producto', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
             $table->decimal('precio', 10, 2);
@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('indicaciones', 100)->nullable();
             $table->string('lote', 100)->nullable();
             $table->string('presentacion', 100)->nullable();
-            $table->foreignId('categoria_id')->nullable()->constrained('categoria_productos');
-            $table->foreignId('proveedor_id')->nullable()->constrained('proveedores');
+            $table->foreignId('categoria_id')->nullable()->constrained('categoria_producto');
+            $table->foreignId('proveedor_id')->nullable()->constrained('proveedor');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('producto');
     }
 };

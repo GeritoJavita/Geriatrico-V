@@ -9,8 +9,9 @@ class UsuarioSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('usuarios')->insert([
+        DB::table('usuario')->insert([
             [
+                'id' =>100,
                 'nombre' => 'Juan',
                 'apellido' => 'Pérez',
                 'correo' => 'juan.perez@example.com',
@@ -19,6 +20,7 @@ class UsuarioSeeder extends Seeder
                 'rol_id' => 1,
             ],
             [
+                'id' =>200,
                 'nombre' => 'Ana',
                 'apellido' => 'Gómez',
                 'correo' => 'ana.gomez@example.com',
