@@ -32,7 +32,3 @@ Route::get('/login', [LoginController::class, 'logins'])->name('login');
 Route::get('/User_register', [LoginController::class, 'User_register'])->name('User_register');
 
 Route::post('/Send_register', [Register_userController::class, 'send_register'])->name('send_register');
-
-
-
-
