@@ -143,6 +143,11 @@
             font-size: 0.95rem;
         }
 
+        .no-decor{
+            text-decoration: none;
+            color: inherit; 
+        }
+
         /* ---- Toast (Notificación) ---- */
         .toast {
             position: fixed;

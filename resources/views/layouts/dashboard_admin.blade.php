@@ -7,13 +7,16 @@
 
     <script src="https://kit.fontawesome.com/a2e0b5a52a.js" crossorigin="anonymous"></script>
 
-    <!--@vite(['resources/css/app.css'])-->
+    @vite(['resources/css/dashboard/dashboard.css'])
     @yield('styles')
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>Hogar <span>Geriátrico</span></h2>
+        <a class="no-decor" href="{{ route('dashboard_admin') }}">
+            <h2>Hogar <span>Geriátrico</span></h2>
+        </a>
+        
         <div class="menu">
             <a href="#"><i class="fas fa-users"></i> Pacientes</a>
             <a href="#"><i class="fas fa-user-nurse"></i> Colaboradores</a>

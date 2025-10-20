@@ -19,13 +19,15 @@ Route::get('/', function () {
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rutas protegidas por autenticación solo por usuarios logeados
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard_admin', [DashboardController::class, 'dashboard_admin'])->name('dashboard_admin');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
     Route::resource('producto', ProductoController::class);
     Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
 });
 
+ 
 Route::post('/login_user', [LoginController::class, 'login'])->name('login_De_usuarios');
 
 Route::get('/login', [LoginController::class, 'logins'])->name('login');
