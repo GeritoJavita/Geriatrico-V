@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
     Route::resource('producto', ProductoController::class);
+    Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
 });
 
 Route::post('/login_user', [LoginController::class, 'login'])->name('login_De_usuarios');

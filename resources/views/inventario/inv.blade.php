@@ -21,7 +21,7 @@
     </div>
     <div class="filter-options">
         <select name="categoria">
-            <option value="">Todas las categorías</option>
+            <option value="">Todas las categoríasss</option>
             <option value="medicamentos">Medicamentos</option>
             <option value="insumos">Insumos médicos</option>
             <option value="limpieza">Productos de limpieza</option>

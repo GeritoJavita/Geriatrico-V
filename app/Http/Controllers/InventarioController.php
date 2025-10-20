@@ -32,7 +32,7 @@ class InventarioController extends Controller
     }
     $inventarios = $queryInventario->get();
 
-    return view('inventario', compact('productos', 'inventarios'));
+    return view('inventario.inventario', compact('productos', 'inventarios'));
 }
 
 }
