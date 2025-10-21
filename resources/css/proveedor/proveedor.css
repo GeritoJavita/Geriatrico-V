@@ -1,0 +1,196 @@
+/* ---- Variables globales ---- */
+:root {
+    --primary-teal: #32b4a8;
+    --primary-beige: #ffffff;
+    --primary-blue: #0097b2;
+    --primary-red: #e74c3c;
+    --primary-green: #2ecc71;
+    --light-bg: #f8f9fa;
+    --dark-text: #333333;
+}
+
+/* ---- Contenedor principal ---- */
+.container-proveedor {
+    padding: 2rem;
+    background: var(--light-bg);
+    min-height: 100vh;
+}
+
+/* ---- Card ---- */
+.card {
+    background: var(--primary-beige);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ---- Títulos ---- */
+.card h2 {
+    color: var(--primary-teal);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.card h2 i {
+    margin-right: 10px;
+}
+
+/* ---- Mensajes ---- */
+.alert {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.alert.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ---- Tabla de proveedores ---- */
+.inventory-table {
+    overflow-x: auto;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--primary-beige);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+thead {
+    background: var(--primary-teal);
+    color: var(--primary-beige);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+th, td {
+    padding: 0.8rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+
+
+/* ---- Botones ---- */
+.btn {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    transition: 0.3s;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-success {
+    background: var(--primary-green);
+}
+
+.btn-success:hover {
+    background: #27ae60;
+}
+
+.btn-danger {
+    background: var(--primary-red);
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.btn-edit {
+    background: var(--primary-blue);
+}
+
+.btn-edit:hover {
+    background: #007299;
+}
+
+.btn-small {
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+/* ---- Formulario ---- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--dark-text);
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-teal);
+    box-shadow: 0 0 5px rgba(50,180,168,0.5);
+}
+
+.form-buttons {
+    margin-top: 1.5rem;
+}
+
+.form-buttons button {
+    margin-right: 10px;
+}
+
+/* ---- Mensaje de error de validación ---- */
+.error {
+    color: var(--primary-red);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    th, td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 0.9rem;
+    }
+}

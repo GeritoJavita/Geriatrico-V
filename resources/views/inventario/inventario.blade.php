@@ -21,7 +21,7 @@
         </form>
         <a href="{{ route('producto.create') }}" class="btn">➕Agregar Producto</a>
         <a href="{{ route('factura.index') }}" class="btn">📝Facturas</a>
-        <button class="btn">🏷️Asignar Proveedor</button>
+        <a href="{{ route('proveedor.index') }}" class="btn">🏷️Proveedores</a>
         <button class="btn">📩Buzón de notificación</button>
     </div>
 </div>
