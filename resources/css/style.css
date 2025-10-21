@@ -5,6 +5,13 @@
     --light-bg: #f8f9fa;
     --dark-text: #333333;
 }
+:root {
+    --primary-green-light: #32b4a8;
+    --primary-beige: #ffffff;
+    --primary-green-dark: #0097b2;
+    --light-bg: #f8f9fa;
+    --dark-text: #333333;
+}
 
 * {
     margin: 0;
@@ -401,6 +408,101 @@ body {
     display: none;
 }
 
+/*GENERAL*/
+
+.list-elements {
+    width: 100%;
+    max-height: 500px;
+    height: auto;
+    overflow: auto;
+}
+
+.list-elements::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.list-elements::-webkit-scrollbar-thumb {
+    background: var(--primary-orange);
+    border-radius: 10px;
+  
+}
+
+.list-elements::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+
+
+.title-form {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+    color: var(--primary-green-dark);
+}
+
+.edit {
+    position: relative;
+    margin: 20px;
+    max-width: 1900px;
+    width: auto;
+    max-height: 530px;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.edit-content {
+    color: white;
+    font-weight: bold;
+    display: flex;
+    margin-top: 30px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--primary-green-light);
+    justify-content: flex-start;
+    padding: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;          /* permite que los elementos pasen a otra fila */
+    gap: 40px;
+}
+
+.edit-input {
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.item-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 200px;
+    gap: 10px;
+    text-align: center;
+}.item-input input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(41, 51, 61, 0.5);
+    outline: none;
+}
+
+.accion_edit{
+    margin-top: 20px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
     .navbar {
@@ -430,7 +532,8 @@ body {
         font-size: 2rem;
     }
 
-    .services, .values {
+    .services,
+    .values {
         grid-template-columns: 1fr;
     }
 
