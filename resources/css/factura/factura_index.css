@@ -1,0 +1,134 @@
+/* ---- Variables globales ---- */
+:root {
+    --primary-teal: #32b4a8;
+    --primary-beige: #ffffff;
+    --primary-blue: #0097b2;
+    --light-bg: #f8f9fa;
+    --dark-text: #333333;
+}
+
+/* ---- Contenedor principal ---- */
+.container-factura {
+    padding: 2rem;
+    background: var(--light-bg);
+    min-height: 100vh;
+}
+
+/* ---- Card ---- */
+.card {
+    background: var(--primary-beige);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ---- Titulos ---- */
+.card h2 {
+    color: var(--primary-teal);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.card h2 i {
+    margin-right: 10px;
+}
+
+/* ---- Mensajes ---- */
+.alert {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.alert.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ---- Tabla ---- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-top: 1rem;
+    background: white;
+}
+
+thead {
+    background: var(--primary-teal);
+    color: white;
+}
+
+th, td {
+    padding: 0.8rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+tr:hover {
+    background: #e0f7f7;
+}
+
+/* ---- Botones ---- */
+.btn {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    transition: 0.3s;
+    background: var(--primary-teal);
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.btn:hover {
+    background: var(--primary-blue);
+}
+
+.btn-danger {
+    background: #e74c3c;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.btn-success {
+    background: #2ecc71;
+}
+
+.btn-success:hover {
+    background: #27ae60;
+}
+
+/* ---- Formulario eliminar inline ---- */
+form {
+    display: inline;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    th, td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}

@@ -19,7 +19,7 @@
 
         /* ---- Sidebar ---- */
         .sidebar {
-            width: 250px;
+            width: 180px;
             background: var(--primary-black);
             color: var(--primary-beige);
             display: flex;
