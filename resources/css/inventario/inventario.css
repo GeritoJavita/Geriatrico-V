@@ -43,7 +43,7 @@ body {
 
 /* ---- Sidebar ---- */
 .sidebar {
-    width: 250px;
+    width: 180px;
     background: var(--primary-teal);
     color: var(--primary-beige);
     display: flex;

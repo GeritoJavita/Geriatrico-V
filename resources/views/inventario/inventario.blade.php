@@ -20,7 +20,7 @@
             <button type="submit" class="btn">Buscar</button>
         </form>
         <a href="{{ route('producto.create') }}" class="btn">➕Agregar Producto</a>
-        <button class="btn">📝Importar Factura</button>
+        <a href="{{ route('factura.index') }}" class="btn">📝Importar Factura</a>
         <button class="btn">🏷️Asignar Proveedor</button>
         <button class="btn">📩Buzón de notificación</button>
     </div>
@@ -52,17 +52,20 @@
                     <td>{{ $producto->lote ?? 'N/A' }}</td>
                     <td>{{ $producto->presentacion ?? 'N/A' }}</td>
                     <td>{{ $producto->proveedor_id ?? 'N/A' }}</td>
-                    <td>
-                       <button type="submit" class="btn">
-                            Editar
-                        </button>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn">
-                            Eliminar
-                        </button>
+                  <td>
+                       <!-- Botón editar -->
+                       <a href="{{ route('producto.edit', $producto->id) }}" class="btn">Editar</a>
 
+                           <!-- Botón eliminar -->
+                       <form action="{{ route('producto.destroy', $producto->id) }}" method="POST" style="display:inline;">
+                         @csrf
+                            @method('DELETE')
+                           <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
+                           Eliminar
+                          </button>
+                        </form>
                     </td>
+
                 </tr>
                 @empty
                 <tr>

@@ -26,15 +26,15 @@ class ProductoController extends Controller
     {
         $categorias = CategoriaProducto::all();
         $proveedores = Proveedor::all();
-        return view('producto.create', compact('categorias', 'proveedores'));
+        return view('producto/producto_create', compact('categorias', 'proveedores'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'categoria_id' => 'required|exists:categoria_productos,id',
-            'proveedor_id' => 'required|exists:proveedores,id',
+            'categoria_id' => 'required|exists:categoria_producto,id',
+            'proveedor_id' => 'required|exists:proveedor,id',
             'precio' => 'required|numeric|min:0',
             'cantidad' => 'required|integer|min:0',
             'stock' => 'required|integer|min:0',

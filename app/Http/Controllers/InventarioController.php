@@ -19,7 +19,7 @@ class InventarioController extends Controller
         $search = $request->get('search');
         $data = $this->inventarioService->listar($search);
 
-        return view('inventario', [
+        return view('inventario/inventario', [
             'productos' => $data['productos'],
             'inventarios' => $data['inventarios'],
         ]);
