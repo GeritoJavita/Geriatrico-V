@@ -8,7 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\FacturaController;
-
+use App\Http\Controllers\ProveedorController;
+use App\Models\Proveedor;
 
 // Ruta para mostrar index principal
 Route::get('/', function () {
@@ -27,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('inventario', InventarioController::class);
     Route::resource('producto', ProductoController::class);
     Route::resource('factura', FacturaController::class);
+    Route::resource('proveedor', ProveedorController::class);
 
     
 });

@@ -10,5 +10,15 @@ class Proveedor extends Model
     use HasFactory;
 
     protected $table = 'proveedor';
-    protected $fillable = ['nombre', 'telefono', 'email', 'direccion'];
+
+    protected $fillable = [
+        'nombre',
+        'direccion',
+        'telefono',
+        'correo'
+    ];
+      public function productos()
+    {
+        return $this->hasMany(Producto::class, 'proveedor_id'); // 'proveedor_id' es la FK en la tabla productos
+    }
 }
