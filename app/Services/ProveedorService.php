@@ -34,7 +34,19 @@ class ProveedorService
     }
 
     public function eliminarProveedor($id)
-    {
-        return $this->proveedorRepository->eliminar($id);
+{
+    $proveedor = $this->proveedorRepository->obtenerPorId($id);
+
+    if (!$proveedor) {
+        throw new \Exception("Proveedor no encontrado.");
     }
+
+ 
+    if ($proveedor->productos()->count() > 0) {
+        throw new \Exception("No se puede eliminar este proveedor porque tiene productos asociados.");
+    }
+
+    return $this->proveedorRepository->eliminar($id);
+}
+
 }

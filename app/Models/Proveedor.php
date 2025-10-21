@@ -17,4 +17,8 @@ class Proveedor extends Model
         'telefono',
         'correo'
     ];
+      public function productos()
+    {
+        return $this->hasMany(Producto::class, 'proveedor_id'); // 'proveedor_id' es la FK en la tabla productos
+    }
 }

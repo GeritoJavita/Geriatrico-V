@@ -57,9 +57,16 @@ class ProveedorController extends Controller
         return redirect()->route('proveedor.index')->with('success', 'Proveedor actualizado correctamente.');
     }
 
-    public function destroy($id)
-    {
+  public function destroy($id)
+{
+    try {
         $this->proveedorService->eliminarProveedor($id);
-        return redirect()->route('proveedor.index')->with('success', 'Proveedor eliminado correctamente.');
+        return redirect()->route('proveedor.index')
+                         ->with('success', 'Proveedor eliminado correctamente.');
+    } catch (\Exception $e) {
+        return redirect()->route('proveedor.index')
+                         ->with('error', $e->getMessage());
     }
+}
+
 }
