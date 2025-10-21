@@ -25,6 +25,7 @@
         <button class="btn">📩Buzón de notificación</button>
     </div>
 </div>
+
 <div class="list-elements">
     <form name="product-list" id="form-validation" class="element-list" novalidate>
         <table>
@@ -43,29 +44,25 @@
             </thead>
             <tbody>
                 @forelse ($productos as $producto)
-                <tr>
-                    <td>{{ $producto->nombre }}</td>
-                    <td class="precio" id="precio">{{$producto->precio }}</td>
-                    <td>{{ $producto->fecha_caducidad ?? 'N/A' }}</td>
-                    <td>{{ $producto->dosis ?? 'N/A' }}</td>
-                    <td>{{ $producto->indicaciones ?? 'N/A' }}</td>
-                    <td>{{ $producto->lote ?? 'N/A' }}</td>
-                    <td>{{ $producto->presentacion ?? 'N/A' }}</td>
-                    <td>{{ $producto->proveedor_id ?? 'N/A' }}</td>
-                  <td>
-                       <!-- Botón editar -->
-                       <a href="{{ route('producto.edit', $producto->id) }}" class="btn">Editar</a>
-
-                           <!-- Botón eliminar -->
-                       <form action="{{ route('producto.destroy', $producto->id) }}" method="POST" style="display:inline;">
-                         @csrf
+                <tr data-id="{{ $producto->id }}">
+                    <td class="nombre">{{ $producto->nombre }}</td>
+                    <td class="precio">{{ $producto->precio }}</td>
+                    <td class="fecha_caducidad">{{ $producto->fecha_caducidad ?? 'N/A' }}</td>
+                    <td class="dosis">{{ $producto->dosis ?? 'N/A' }}</td>
+                    <td class="indicaciones">{{ $producto->indicaciones ?? 'N/A' }}</td>
+                    <td class="lote">{{ $producto->lote ?? 'N/A' }}</td>
+                    <td class="presentacion">{{ $producto->presentacion ?? 'N/A' }}</td>
+                    <td class="proveedor_id">{{ $producto->proveedor_id ?? 'N/A' }}</td>
+                    <td>
+                        <button type="button" class="btn btn-edit">Editar</button>
+                        <form action="{{ route('producto.destroy', $producto->id) }}" method="POST" style="display:inline;">
+                            @csrf
                             @method('DELETE')
-                           <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
-                           Eliminar
-                          </button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
+                                Eliminar
+                            </button>
                         </form>
                     </td>
-
                 </tr>
                 @empty
                 <tr>
@@ -76,40 +73,38 @@
         </table>
     </form>
 </div>
+
 <div class="edit">
     <div class="title-form">
         <a>Producto a editar</a>
     </div>
     <form id="form-validation-edit" novalidate>
+        <input type="hidden" id="id-edit" name="id"> <!-- ID oculto -->
         <div class="edit-content">
             <div class="item-input">
                 <span>Nombre</span>
-                <input id="nombre-edit" name="nombre" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
+                <input id="nombre-edit" name="nombre" required>
             </div>
             <div class="item-input">
                 <span>Precio</span>
-                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
+                <input id="precio-edit" name="precio" required>
             </div>
             <div class="item-input">
                 <span>Indicaciones</span>
-                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
+                <input id="indicaciones-edit" name="indicaciones" required>
             </div>
             <div class="item-input">
                 <span>Lote</span>
-                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
+                <input id="lote-edit" name="lote" required>
             </div>
             <div class="item-input">
                 <span>Presentación</span>
-                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
+                <input id="presentacion-edit" name="presentacion" required>
             </div>
         </div>
         <div class="accion_edit">
-            <div class="buttonlist">
-                <button class="btn" type="submit" name="actualizar" value="actualizar">Actualizar</button>
-            </div>
-            <div class="buttonlist">
-                <button class="btn" id="btn-vaciar" type="button" name="vaciar" value="vaciar">Vaciar</button>
-            </div>
+            <button class="btn" id="btn-actualizar" type="button">Actualizar</button>
+            <button class="btn" id="btn-vaciar" type="button">Vaciar</button>
         </div>
     </form>
 </div>
