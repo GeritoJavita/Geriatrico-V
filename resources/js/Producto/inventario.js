@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
             notyf.error('Campos inválidos o no llenados');        
         }
         const datos = new FormData(formEdit);
-        fetch('',{
+        fetch('/Actualizar_inv',{
             method: 'POST',
             body: datos,
             headers :{
@@ -85,6 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if(data.success){
                 notyf.success("Actualización de datos");
             
+            }else{
+                notyf.error(data.message);
+                alert(data.message);
             }
         })
     });

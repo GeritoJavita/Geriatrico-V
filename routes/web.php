@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
  
 Route::post('/login_user', [LoginController::class, 'login'])->name('login_De_usuarios');
 
+Route::post('/Actualizar_pro', [ProductoController::class, 'actualizar_producto'])->name('actualizar_producto');
+
 Route::get('/login', [LoginController::class, 'logins'])->name('login');
 
 Route::get('/User_register', [LoginController::class, 'User_register'])->name('User_register');

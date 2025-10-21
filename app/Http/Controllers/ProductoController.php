@@ -53,4 +53,10 @@ class ProductoController extends Controller
         return redirect()->route('inventario.index')
             ->with('success', 'Producto eliminado correctamente.');
     }
+
+
+     public function Actualizar_pro(Request $request){
+
+    }
+
 }

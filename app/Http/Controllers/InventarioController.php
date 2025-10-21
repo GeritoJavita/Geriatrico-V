@@ -24,4 +24,5 @@ class InventarioController extends Controller
             'inventarios' => $data['inventarios'],
         ]);
     }
+
 }

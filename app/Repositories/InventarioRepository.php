@@ -16,6 +16,7 @@ class InventarioRepository
         return Inventario::create($data);
     }
 
+    
     public function search($search)
     {
         return Inventario::with('producto')

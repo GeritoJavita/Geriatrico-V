@@ -39,7 +39,7 @@ class LoginController extends Controller
             ]);
         }
 
-        Log::warning('❌ Intento de inicio de sesión fallido', [
+        Log::warning('Intento de inicio de sesión fallido', [
             'correo' => $request->input('correo'),
             'ip' => $request->ip(),
         ]);
