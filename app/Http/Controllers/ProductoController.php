@@ -55,8 +55,35 @@ class ProductoController extends Controller
     }
 
 
-     public function Actualizar_pro(Request $request){
+      public function actualizar_producto(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'message' => 'Petición recibida correctamente',
+            'datos' => $request->all()
+        ]);
+        /*
+        try {
+            $producto = Producto::findOrFail($request->id);
 
+            // Limpiar el valor de precio (quitar $ y puntos)
+            $precio = preg_replace('/[^\d]/', '', $request->precio);
+
+            $producto->update([
+                'nombre' => $request->nombre,
+                'precio' => $precio,
+                'indicaciones' => $request->indicaciones,
+                'lote' => $request->lote,
+                'presentacion' => $request->presentacion,
+            ]);
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al actualizar: ' . $e->getMessage()
+            ]);
+        }*/
     }
 
 }
