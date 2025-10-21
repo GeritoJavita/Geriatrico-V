@@ -3,7 +3,7 @@
 @section('title', 'Inventario - Hogar Geriátrico')
 
 @section('styles')
-@vite(['resources/css/inventario/inventario.css','resources/css/style.css'])
+@vite(['resources/css/inventario/inventario.css','resources/css/style.css','resources/js/Producto/inventario.js'])
 @endsection
 
 @section('header', 'Inventario')
@@ -45,7 +45,7 @@
                 @forelse ($productos as $producto)
                 <tr>
                     <td>{{ $producto->nombre }}</td>
-                    <td>${{ number_format($producto->precio, 2) }}</td>
+                    <td class="precio" id="precio">{{$producto->precio }}</td>
                     <td>{{ $producto->fecha_caducidad ?? 'N/A' }}</td>
                     <td>{{ $producto->dosis ?? 'N/A' }}</td>
                     <td>{{ $producto->indicaciones ?? 'N/A' }}</td>
@@ -81,25 +81,24 @@
         <div class="edit-content">
             <div class="item-input">
                 <span>Nombre</span>
-                <input id="nombre-edit" name="nombre" required>
+                <input id="nombre-edit" name="nombre" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
             </div>
             <div class="item-input">
                 <span>Precio</span>
-                <input id="nombre-edit" name="nombre" required>
+                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
             </div>
             <div class="item-input">
                 <span>Indicaciones</span>
-                <input id="nombre-edit" name="nombre" required>
+                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
             </div>
             <div class="item-input">
                 <span>Lote</span>
-                <input id="nombre-edit" name="nombre" required>
+                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
             </div>
             <div class="item-input">
                 <span>Presentación</span>
-                <input id="nombre-edit" name="nombre" required>
+                <input id="precio-edit" name="precio" pattern="^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$" required>
             </div>
-
         </div>
         <div class="accion_edit">
             <div class="buttonlist">

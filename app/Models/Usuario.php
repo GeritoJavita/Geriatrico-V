@@ -17,6 +17,7 @@ class Usuario extends Authenticatable
     protected $keyType = 'int';
 
     protected $fillable = [
+        'id',
         'nombre',
         'apellido',
         'correo',

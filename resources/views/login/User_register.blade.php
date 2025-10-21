@@ -24,7 +24,6 @@
                     <div class="form-group">
                         <span>Nombres</span><input type="text" name="nombre" pattern="[A-Za-z\s]+" title="Solo letras"
                             placeholder="" required><small class="small-red">*</small>
-
                     </div>
                     <div class="form-group">
                         <span>Apellido</span>

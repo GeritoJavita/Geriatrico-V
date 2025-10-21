@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => {
                         addform.reset();
                         addform.classList.remove('was-validated');
-
+                        
                         notyf.success("Redirigiendo...");
                         setTimeout(() => {
                             window.location.href = data.redirect;

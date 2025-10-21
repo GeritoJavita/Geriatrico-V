@@ -92,11 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 2000);
                 } else {
                     notyf.error(data.message || 'Error desconocido');
+                    alert(data.message);
                 }
             })
             .catch(error => {
                 notyf.error('Error inesperado: ' + error.message);
-
+                alert(error.message);
+                
             });
     });
 
