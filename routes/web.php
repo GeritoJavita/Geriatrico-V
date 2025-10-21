@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\FacturaController;
 
 
 // Ruta para mostrar index principal
@@ -23,8 +24,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard_admin', [DashboardController::class, 'dashboard_admin'])->name('dashboard_admin');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
+    Route::resource('inventario', InventarioController::class);
     Route::resource('producto', ProductoController::class);
-    Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
+    Route::resource('factura', FacturaController::class);
+
+    
 });
 
  

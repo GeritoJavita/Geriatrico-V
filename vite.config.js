@@ -15,6 +15,8 @@ export default defineConfig({
                 'resources/css/dashboard/dashboard.css',
                 'resources/js/login/login.js',
                 'resources/js/producto/inventario.js',
+                'resources/css/factura/factura.css'
+
             ],
             refresh: true,
         }),
