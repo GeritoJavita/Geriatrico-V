@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\ProductoService;
 use App\Models\CategoriaProducto;
 use App\Models\Proveedor;
+use App\Models\Producto;
 
 class ProductoController extends Controller
 {
@@ -43,7 +44,7 @@ class ProductoController extends Controller
         $this->productoService->crearProductoConInventario($request->all());
 
         return redirect()->route('inventario.index')
-            ->with('success', '✅ Producto e inventario creados correctamente.');
+            ->with('success', 'Producto e inventario creados correctamente.');
     }
 
     public function destroy($id)
@@ -55,8 +56,34 @@ class ProductoController extends Controller
     }
 
 
-     public function Actualizar_pro(Request $request){
+    public function actualizar_producto(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'message' => 'Petición recibida correctamente',
+            'datos' => $request->all()
+        ]);
+        /*
+        try {
+            $producto = Producto::findOrFail($request->id);
 
+            // Limpiar el valor de precio (quitar $ y puntos)
+            $precio = preg_replace('/[^\d]/', '', $request->precio);
+
+            $producto->update([
+                'nombre' => $request->nombre,
+                'precio' => $precio,
+                'indicaciones' => $request->indicaciones,
+                'lote' => $request->lote,
+                'presentacion' => $request->presentacion,
+            ]);
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al actualizar: ' . $e->getMessage()
+            ]);
+        }*/
     }
-
 }

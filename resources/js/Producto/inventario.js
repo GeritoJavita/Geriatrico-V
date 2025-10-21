@@ -3,13 +3,9 @@ import { Notyf } from 'notyf';
 
 document.addEventListener("DOMContentLoaded", () => {
     const notyf = new Notyf({
-            duration: 3500,
-            position: {
-                x: 'center',
-                y: 'top'
-            }
-        });
-
+        duration: 3500,
+        position: { x: 'center', y: 'top' }
+    });
 
     const editButtons = document.querySelectorAll(".btn-edit");
     const formEdit = document.getElementById("form-validation-edit");
@@ -29,11 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return numero.toLocaleString("es-CO", {
             style: "currency",
             currency: "COP",
-            minimumFractionDigits: 0,
+            minimumFractionDigits: 0
         });
     }
 
-    
     function aplicarFormatoATabla() {
         const celdasPrecio = document.querySelectorAll("td.precio");
         celdasPrecio.forEach(celda => {
@@ -42,61 +37,62 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    aplicarFormatoATabla(); // Ejecutar al cargar
+    aplicarFormatoATabla();
 
     editButtons.forEach(btn => {
         btn.addEventListener("click", e => {
             const fila = e.target.closest("tr");
-
-            nombreEdit.value = fila.querySelector("td:nth-child(1)").textContent.trim();
-            precioEdit.value = formatearPesos(fila.querySelector("td:nth-child(2)").textContent.trim());
-            indicacionesEdit.value = fila.querySelector("td:nth-child(5)").textContent.trim();
-            loteEdit.value = fila.querySelector("td:nth-child(6)").textContent.trim();
-            presentacionEdit.value = fila.querySelector("td:nth-child(7)").textContent.trim();
+            document.getElementById("id").value = fila.dataset.id;
+            nombreEdit.value = fila.querySelector(".nombre").textContent.trim();
+            precioEdit.value = formatearPesos(fila.querySelector(".precio").textContent.trim());
+            indicacionesEdit.value = fila.querySelector(".indicaciones").textContent.trim();
+            loteEdit.value = fila.querySelector(".lote").textContent.trim();
+            presentacionEdit.value = fila.querySelector(".presentacion").textContent.trim();
 
             formEdit.scrollIntoView({ behavior: "smooth" });
         });
     });
 
     precioEdit.addEventListener("input", () => {
-        const valor = precioEdit.value.replace(/[^\d]/g, ""); 
+        const valor = precioEdit.value.replace(/[^\d]/g, "");
         precioEdit.value = formatearPesos(valor);
     });
 
-    btnActualizar.addEventListener("click", ()=>{
-        notyf.success("que pedo");
-        let isValid =true; 
-        if(!formEdit.checkValidity()){
+    btnActualizar.addEventListener("click", (e) => {
+        notyf.success("ay");
+        e.preventDefault();
+        if (!formEdit.checkValidity()) {
             formEdit.classList.add('was-validated');
-            isValid = false;
-            notyf.error('Campos inválidos o no llenados');        
+            notyf.error('Campos inválidos o no llenados');
+            return;
         }
+
         const datos = new FormData(formEdit);
-        fetch('/Actualizar_inv',{
+        fetch('/Actualizar_pro', {
             method: 'POST',
             body: datos,
-            headers :{
+            headers: {
                 'Accept': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')// y esta belleza es obligatorio para proteger la app contra ataques csrf 
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
             credentials: 'include'
-        }).then(response => response.json())
-        .then (data =>{
-            if(data.success){
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
                 notyf.success("Actualización de datos");
-            
-            }else{
-                notyf.error(data.message);
-                alert(data.message);
+                formEdit.reset();
+                setTimeout(() => window.location.reload(), 1000);
+            } else {
+                notyf.error(data.message || 'Error en la actualización');
+                console.error(data);
             }
         })
+        .catch(error => {
+            console.error(error);
+            notyf.error('Error al conectar con el servidor');
+        });
     });
 
-   
-
-
-
-    btnVaciar.addEventListener("click", () => {
-        formEdit.reset();
-    });
+    btnVaciar.addEventListener("click", () => formEdit.reset());
 });

@@ -3,7 +3,11 @@
 @section('title', 'Inventario - Hogar Geriátrico')
 
 @section('styles')
-@vite(['resources/css/inventario/inventario.css','resources/css/style.css','resources/js/Producto/inventario.js'])
+@vite([
+    'resources/css/inventario/inventario.css',
+    'resources/css/style.css',
+    'resources/js/Producto/inventario.js'
+])
 @endsection
 
 @section('header', 'Inventario')
@@ -79,33 +83,41 @@
         <a>Producto a editar</a>
     </div>
     <form id="form-validation-edit" novalidate>
-        <input type="hidden" id="id-edit" name="id"> <!-- ID oculto -->
+        @csrf
+        <input type="hidden" id="id" name="id">
+
         <div class="edit-content">
             <div class="item-input">
                 <span>Nombre</span>
                 <input id="nombre-edit" name="nombre" required>
             </div>
+
             <div class="item-input">
                 <span>Precio</span>
                 <input id="precio-edit" name="precio" required>
             </div>
+
             <div class="item-input">
                 <span>Indicaciones</span>
                 <input id="indicaciones-edit" name="indicaciones" required>
             </div>
+
             <div class="item-input">
                 <span>Lote</span>
                 <input id="lote-edit" name="lote" required>
             </div>
+
             <div class="item-input">
                 <span>Presentación</span>
                 <input id="presentacion-edit" name="presentacion" required>
             </div>
         </div>
+
         <div class="accion_edit">
             <button class="btn" id="btn-actualizar" type="button">Actualizar</button>
             <button class="btn" id="btn-vaciar" type="button">Vaciar</button>
         </div>
     </form>
 </div>
+
 @endsection
