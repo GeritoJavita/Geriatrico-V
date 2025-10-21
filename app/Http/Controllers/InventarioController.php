@@ -3,36 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Producto;
-use App\Models\Inventario;
+use App\Services\InventarioService;
 
 class InventarioController extends Controller
 {
+    protected $inventarioService;
+
+    public function __construct(InventarioService $inventarioService)
+    {
+        $this->inventarioService = $inventarioService;
+    }
+
     public function index(Request $request)
-{
-    // Filtrar productos
-    $queryProductos = Producto::query();
-    if ($request->has('search') && !empty($request->search)) {
-        $search = $request->search;
-        $queryProductos->where('nombre', 'like', "%$search%")
-                       ->orWhere('id', $search)
-                       ->orWhere('proveedor_id', $search);
+    {
+        $search = $request->get('search');
+        $data = $this->inventarioService->listar($search);
+
+        return view('inventario', [
+            'productos' => $data['productos'],
+            'inventarios' => $data['inventarios'],
+        ]);
     }
-    $productos = $queryProductos->get();
-
-    // Filtrar inventarios
-    $queryInventario = Inventario::with('producto');
-    if ($request->has('search') && !empty($request->search)) {
-        $search = $request->search;
-        $queryInventario->whereHas('producto', function($q) use ($search) {
-            $q->where('nombre', 'like', "%$search%")
-              ->orWhere('id', $search);
-        })->orWhere('stock', $search)
-          ->orWhere('cantidad', $search);
-    }
-    $inventarios = $queryInventario->get();
-
-    return view('inventario.inventario', compact('productos', 'inventarios'));
-}
-
 }

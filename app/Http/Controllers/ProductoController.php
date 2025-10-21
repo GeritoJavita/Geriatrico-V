@@ -2,75 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
+use Illuminate\Http\Request;
+use App\Services\ProductoService;
 use App\Models\CategoriaProducto;
 use App\Models\Proveedor;
-use App\Models\Inventario;
-use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
+    protected $productoService;
+
+    public function __construct(ProductoService $productoService)
+    {
+        $this->productoService = $productoService;
+    }
+
     public function index()
     {
-        $productos = Producto::with(['categoria', 'proveedor'])->get();
-        return view('producto.index', compact('producto'));
+        $productos = $this->productoService->listarProductos();
+        return view('producto.index', compact('productos'));
     }
 
     public function create()
     {
         $categorias = CategoriaProducto::all();
         $proveedores = Proveedor::all();
-        return view('producto.producto_create', compact('categorias', 'proveedores'));
+        return view('producto.create', compact('categorias', 'proveedores'));
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'nombre' => 'required|string|max:255',
-        'categoria_id' => 'required|exists:categoria_producto,id',
-        'proveedor_id' => 'required|exists:proveedor,id',
-        'precio' => 'required|numeric|min:0',
-        'cantidad' => 'required|integer|min:0',
-        'stock' => 'required|integer|min:0',
-    ]);
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'categoria_id' => 'required|exists:categoria_productos,id',
+            'proveedor_id' => 'required|exists:proveedores,id',
+            'precio' => 'required|numeric|min:0',
+            'cantidad' => 'required|integer|min:0',
+            'stock' => 'required|integer|min:0',
+        ]);
 
-    // 1 Crear el producto
-    $producto = Producto::create([
-        'nombre' => $request->nombre,
-        'precio' => $request->precio,
-        'categoria_id' => $request->categoria_id,
-        'proveedor_id' => $request->proveedor_id,
-        'fecha_caducidad' => $request->fecha_caducidad,
-        'dosis' => $request->dosis,
-        'indicaciones' => $request->indicaciones,
-        'lote' => $request->lote,
-        'presentacion' => $request->presentacion,
-    ]);
+        $this->productoService->crearProductoConInventario($request->all());
 
-    // Crear inventario asociado al producto
-    Inventario::create([
-        'id_producto' => $producto->id,
-        'cantidad' => $request->cantidad,
-        'stock' => $request->stock,
-    ]);
-
-    return redirect()
-        ->route('inventario.index')
-        ->with('success', '✅ Producto e inventario creados correctamente.');
-}
-
-public function destroy($id)
-{
-    $producto = Producto::findOrFail($id);
-
-    //  eliminar también su inventario asociado:
-    if ($producto->inventario) {
-        $producto->inventario->delete();
+        return redirect()->route('inventario.index')
+            ->with('success', '✅ Producto e inventario creados correctamente.');
     }
 
-    $producto->delete();
+    public function destroy($id)
+    {
+        $this->productoService->eliminarProducto($id);
 
-    return redirect()->route('inventario.index')
-        ->with('success', 'Producto eliminado correctamente');
-}
+        return redirect()->route('inventario.index')
+            ->with('success', 'Producto eliminado correctamente.');
+    }
 }
