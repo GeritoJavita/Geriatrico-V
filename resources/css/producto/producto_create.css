@@ -1,0 +1,258 @@
+/* ========================
+   🎨 VARIABLES DE COLOR
+======================== */
+:root {
+    --primary-teal: #32b4a8;
+    --primary-white: #ffffff;
+    --primary-blue: #0097b2;
+    --light-bg: #f8f9fa;
+    --dark-text: #333333;
+}
+
+/* ========================
+   🔄 RESETEO GLOBAL
+======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ========================
+   🧭 SIDEBAR
+======================== */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, var(--primary-teal), var(--primary-blue));
+    color: var(--primary-white);
+    padding: 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.sidebar h2 span {
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    color: var(--primary-white);
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    transition: 0.3s, transform 0.2s;
+}
+
+.menu a i {
+    margin-right: 10px;
+}
+
+.menu a:hover,
+.menu a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+/* ========================
+   🧩 MAIN
+======================== */
+.main {
+    flex-grow: 1;
+    padding: 2rem;
+}
+
+/* ========================
+   🔝 HEADER
+======================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-blue);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.header h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info span {
+    font-weight: bold;
+}
+
+.user-info button {
+    background-color: white;
+    color: var(--primary-blue);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.user-info button:hover {
+    background-color: var(--primary-teal);
+    color: white;
+}
+
+/* ========================
+   🧾 FORMULARIO
+======================== */
+form.form-container {
+    background-color: var(--primary-white);
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 151, 178, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    display: block;
+    color: var(--dark-text);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #d0d7de;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-teal);
+    box-shadow: 0 0 6px rgba(50, 180, 168, 0.3);
+    outline: none;
+}
+
+/* ========================
+   🔘 BOTONES
+======================== */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn {
+    background-color: var(--primary-teal);
+    color: var(--primary-white);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.btn.cancel {
+    background-color: #e74c3c;
+}
+
+.btn.cancel:hover {
+    background-color: #c0392b;
+}
+
+/* ========================
+   ⚠️ ERRORES
+======================== */
+.alert ul {
+    list-style: none;
+    padding: 0;
+}
+
+.alert li {
+    background: #ffecec;
+    color: #d63031;
+    padding: 0.6rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    border-left: 5px solid #d63031;
+    font-size: 0.95rem;
+}
+
+/* ========================
+   📱 RESPONSIVE
+======================== */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 1rem;
+    }
+
+    .main {
+        padding: 1rem;
+    }
+
+    form.form-container {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
