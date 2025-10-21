@@ -284,6 +284,7 @@ form .form-group {
     border-radius: 10px;
     border: 1px solid rgba(41, 51, 61, 0.5);
     outline: none;
+    
 }
 .title-form{
     display: flex;
@@ -335,19 +336,16 @@ form .form-group {
 }
 
 
-input {
+.form-login input {
   background: transparent !important;
   color: black; /* o negro según tu fondo */
 }
 
-input::placeholder {
 
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
+.form-login input:-webkit-autofill,
+.form-login input:-webkit-autofill:hover,
+.form-login input:-webkit-autofill:focus,
+.form-login input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   -webkit-text-fill-color:black !important;
   transition: background-color 9999s ease-in-out 0s;
