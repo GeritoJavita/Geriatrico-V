@@ -3,7 +3,7 @@
 @section('title', 'Agregar Producto')
 
 @section('styles')
-    @vite(['resources/css/producto/producto_create.css'])
+    @vite(['resources/css/create/form_create.css'])
 @endsection
 
 @section('header', 'Agregar Producto')

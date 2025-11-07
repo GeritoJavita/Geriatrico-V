@@ -4,7 +4,7 @@
 @section('header', 'Listado de Proveedores')
 
 @section('styles')
-@vite(['resources/css/proveedor/proveedor.css','resources/css/style.css'])
+@vite(['resources/css/proveedor/proveedor.css','resources/css/style.css','resources/js/proveedor/proveedor_edit.js'])
 @endsection
 
 @section('content')
@@ -26,44 +26,46 @@
         @endif
 
         {{-- Tabla de proveedores --}}
-        <div class="inventory-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Dirección</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($proveedores as $proveedor)
-                    <tr>
-                        <td id="id">{{ $proveedor->id }}</td>
-                        <td id="nombre">{{ $proveedor->nombre }}</td>
-                        <td id="direccion">{{ $proveedor->direccion }}</td>
-                        <td id="telefono">{{ $proveedor->telefono }}</td>
-                        <td id="correo">{{ $proveedor->correo }}</td>
-                        <td>
-                            <a href="{{ route('proveedor.edit', $proveedor->id) }}" class="btn btn-edit btn-small">Editar</a>
+        <form name="proveedor-list" id="form-validation" class="element-list" novalidate>
+            <div class="inventory-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Dirección</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($proveedores as $proveedor)
+                        <tr>
+                            <td class="id">{{ $proveedor->id }}</td>
+                            <td class="nombre">{{ $proveedor->nombre }}</td>
+                            <td class="direccion">{{ $proveedor->direccion }}</td>
+                            <td class="telefono">{{ $proveedor->telefono }}</td>
+                            <td class="correo">{{ $proveedor->correo }}</td>
+                            <td>
 
-                            <form action="{{ route('proveedor.destroy', $proveedor->id) }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-small" onclick="return confirm('¿Estás seguro de eliminar este proveedor?')">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="6">No hay proveedores registrados.</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+                                <button type="button" class="btn btn-edit">Editar</button>
+                                <form action="{{ route('proveedor.destroy', $proveedor->id) }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn" onclick="return confirm('¿Estás seguro de eliminar este proveedor?')">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="6">No hay proveedores registrados.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </form>
     </div>
 </div>
 <div class="edit">
@@ -72,33 +74,36 @@
     </div>
     <form id="form-validation-edit" novalidate>
         @csrf
-        <input type="hidden" id="id" name="id">
+        <input type="hidden" id="id-edit" name="id">
 
         <div class="edit-content">
             <div class="item-input">
                 <span>Nombre</span>
                 <input id="nombre-edit" name="nombre" required>
+                <small class="small-red">*</small>
             </div>
 
             <div class="item-input">
                 <span>Direccion</span>
-                <input id="precio-edit" name="precio" required>
+                <input id="direccion-edit" name="direccion" required>
+                <small class="small-red">*</small>
             </div>
-
             <div class="item-input">
                 <span>Telefono</span>
-                <input id="indicaciones-edit" name="indicaciones" required>
+                <input type="number" id="telefono-edit" name="telefono" required>
+                <small class="small-red telefono-error">*</small>
             </div>
 
             <div class="item-input">
                 <span>Correo</span>
-                <input id="lote-edit" name="lote" required>
+                <input type="correo" id="correo-edit" name="correo" required>
+                <small class="small-red correo-error">*</small>
             </div>
         </div>
 
         <div class="accion_edit">
-            <button class="btn" id="btn-actualizar" type="button">Actualizar</button>
-            <button class="btn" id="btn-vaciar" type="button">Vaciar</button>
+            <button class="btn btn-edit" id="btn-actualizar" type="button">Actualizar</button>
+            <button class="btn btn-danger" id="btn-vaciar" type="button">Vaciar</button>
         </div>
     </form>
 </div>

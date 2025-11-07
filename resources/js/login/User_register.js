@@ -1,6 +1,7 @@
 import '../bootstrap';
 import 'notyf/notyf.min.css';
 import { Notyf } from 'notyf';
+import { validarCorreo } from '../app.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -36,16 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
         telefonoError.style.display = 'none';
         telefonoError.textContent = '';
 
-        const correoRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com)$/;
+
         const correoTrim = correoInput.value.trim();
         let isValid = true;
 
-        // Validación correo
-        if (!correoRegex.test(correoTrim)) {
+         if (!validarCorreo(correoTrim)) {
             correoError.style.display = 'inline';
             correoError.textContent = 'Correo no válido: usa Gmail, Hotmail u Outlook.';
             isValid = false;
+        } else {
+            correoError.style.display = 'none';
         }
+        
 
         // Validación HTML5 y contraseña
         if (!addform.checkValidity() || passwordInput.value.length < 8) {

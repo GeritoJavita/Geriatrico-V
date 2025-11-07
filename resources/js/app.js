@@ -1,8 +1,19 @@
-import './bootstrap';
-import 'notyf/notyf.min.css';
+export function formatearPesos(valor) {
+    if (!valor) return "";
+    const numero = parseFloat(String(valor).replace(/[^\d]/g, ""));
+    if (isNaN(numero)) return "";
+    return numero.toLocaleString("es-CO", {
+        style: "currency",
+        currency: "COP",
+        minimumFractionDigits: 0
+    });
+}
 
-const notyf = new Notyf();
+export function limpiarFormatoPesos(valor) {
+    return parseFloat(String(valor).replace(/[^\d]/g, "")) || 0;
+}
 
-// Ejemplo de uso
-notyf.success('¡Todo salió bien!');
-notyf.error('Algo salió mal.');
+export function validarCorreo(correoTrim) {
+    const correoRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com)$/;
+    return correoRegex.test(correoTrim);
+}

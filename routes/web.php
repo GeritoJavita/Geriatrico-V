@@ -29,11 +29,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('producto', ProductoController::class);
     Route::resource('factura', FacturaController::class);
     Route::resource('proveedor', ProveedorController::class);
-
-    
+    Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedor.store');
+    Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->name('proveedor.update');
+    Route::delete('/proveedores/{id}', [ProveedorController::class, 'destroy'])->name('proveedor.destroy');
 });
 
- 
+
 Route::post('/login_user', [LoginController::class, 'login'])->name('login_De_usuarios');
 
 Route::post('/Actualizar_pro', [ProductoController::class, 'actualizar_producto'])->name('actualizar_producto');

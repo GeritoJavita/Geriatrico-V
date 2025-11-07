@@ -1,5 +1,6 @@
 import 'notyf/notyf.min.css';
 import { Notyf } from 'notyf';
+import { formatearPesos } from '../app.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const notyf = new Notyf({
@@ -18,16 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnVaciar = document.getElementById("btn-vaciar");
     const btnActualizar = document.getElementById("btn-actualizar");
 
-    function formatearPesos(valor) {
-        if (!valor) return "";
-        const numero = parseFloat(String(valor).replace(/[^\d]/g, ""));
-        if (isNaN(numero)) return "";
-        return numero.toLocaleString("es-CO", {
-            style: "currency",
-            currency: "COP",
-            minimumFractionDigits: 0
-        });
-    }
+   
 
     function aplicarFormatoATabla() {
         const celdasPrecio = document.querySelectorAll("td.precio");

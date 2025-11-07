@@ -187,10 +187,12 @@ form .form-group {
     color: red;
     position: absolute;
     display: none;
+    top: -15px;
 }
 
 .was-validated input:invalid~.small-red {
     display: block;
+   
 }
 
 .small-a {
@@ -300,6 +302,7 @@ form .form-group {
     padding: 4px;
 }
 .contentR .form-group{
+    position: relative;
     display: flex;
     flex-direction: column;
     text-align: center;

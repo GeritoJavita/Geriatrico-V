@@ -4,23 +4,23 @@
 @section('header', 'Agregar Proveedor')
 
 @section('styles')
-@vite(['resources/css/proveedor/proveedor.css'])
+@vite(['resources/css/create/form_create.css'])
 @endsection
 
 @section('content')
 <div class="container-proveedor">
-    <div class="card">
-        <h2><i class="fas fa-truck"></i> Agregar Proveedor</h2>
+    <h2><i class="fas fa-truck"></i> Agregar Proveedor</h2>
 
-        {{-- Mensajes --}}
-        @if(session('success'))
-            <div class="alert success">{{ session('success') }}</div>
-        @endif
-        @if(session('error'))
-            <div class="alert error">{{ session('error') }}</div>
-        @endif
+    {{-- Mensajes --}}
+    @if(session('success'))
+    <div class="alert success">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+    <div class="alert error">{{ session('error') }}</div>
+    @endif
 
-        {{-- Formulario --}}
+    {{-- Formulario --}}
+    <div class="form_create">
         <form action="{{ route('proveedor.store') }}" method="POST">
             @csrf
 
@@ -28,7 +28,7 @@
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" placeholder="Nombre del proveedor" required>
                 @error('nombre')
-                    <small class="error">{{ $message }}</small>
+                <small class="error">{{ $message }}</small>
                 @enderror
             </div>
 
@@ -36,7 +36,7 @@
                 <label for="direccion">Dirección:</label>
                 <input type="text" name="direccion" id="direccion" placeholder="Dirección del proveedor" required>
                 @error('direccion')
-                    <small class="error">{{ $message }}</small>
+                <small class="error">{{ $message }}</small>
                 @enderror
             </div>
 
@@ -44,7 +44,7 @@
                 <label for="telefono">Teléfono:</label>
                 <input type="text" name="telefono" id="telefono" placeholder="Teléfono del proveedor" required>
                 @error('telefono')
-                    <small class="error">{{ $message }}</small>
+                <small class="error">{{ $message }}</small>
                 @enderror
             </div>
 
@@ -52,7 +52,7 @@
                 <label for="correo">Correo:</label>
                 <input type="email" name="correo" id="correo" placeholder="Correo del proveedor" required>
                 @error('correo')
-                    <small class="error">{{ $message }}</small>
+                <small class="error">{{ $message }}</small>
                 @enderror
             </div>
 
@@ -66,5 +66,6 @@
             </div>
         </form>
     </div>
+
 </div>
 @endsection
