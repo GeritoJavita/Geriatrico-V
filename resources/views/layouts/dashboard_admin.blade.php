@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Hogar Geriátrico')</title>
-
     <script src="https://kit.fontawesome.com/a2e0b5a52a.js" crossorigin="anonymous"></script>
-
     @vite(['resources/css/dashboard/dashboard.css'])
     @yield('styles')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
         <a class="no-decor" href="{{ route('dashboard_admin') }}">
             <h2>Hogar <span>Geriátrico</span></h2>
         </a>
-        
+
         <div class="menu">
             <a href="#"><i class="fas fa-users"></i> Pacientes</a>
             <a href="#"><i class="fas fa-user-nurse"></i> Colaboradores</a>
@@ -50,4 +51,5 @@
 
     @yield('scripts')
 </body>
+
 </html>

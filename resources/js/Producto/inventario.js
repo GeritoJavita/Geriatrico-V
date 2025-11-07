@@ -65,6 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
             formEdit.classList.add('was-validated');
             notyf.error('Campos inválidos o no llenados');
             return;
+        }else{
+            
         }
 
         const datos = new FormData(formEdit);
@@ -74,11 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
             headers: {
                 'Accept': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            credentials: 'include'
+            }
         })
         .then(response => response.json())
         .then(data => {
+            notyf.success("paso fetch");
             if (data.success) {
                 notyf.success("Actualización de datos");
                 formEdit.reset();

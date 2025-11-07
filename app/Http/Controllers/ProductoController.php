@@ -58,12 +58,7 @@ class ProductoController extends Controller
 
     public function actualizar_producto(Request $request)
     {
-        return response()->json([
-            'success' => true,
-            'message' => 'Petición recibida correctamente',
-            'datos' => $request->all()
-        ]);
-        /*
+        
         try {
             $producto = Producto::findOrFail($request->id);
 
@@ -84,6 +79,6 @@ class ProductoController extends Controller
                 'success' => false,
                 'message' => 'Error al actualizar: ' . $e->getMessage()
             ]);
-        }*/
+        }
     }
 }
