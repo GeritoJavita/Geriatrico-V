@@ -2,6 +2,7 @@ import 'notyf/notyf.min.css';
 import Swal from 'sweetalert2';
 import { Notyf } from 'notyf';
 import { validarCorreo } from '../app.js';
+import { formatearPesos } from '../app.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const notyf = new Notyf({
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         Swal.fire({
-            title: "¿Quieres actualizar este proveedor?",
+            title: "¿Quieres    actualizar este proveedor?",
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: "Actualizar",

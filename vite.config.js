@@ -15,8 +15,10 @@ export default defineConfig({
                 'resources/js/login/login.js',
                 'resources/js/producto/inventario.js',
                 'resources/css/factura/factura.css',
-                'resources/js/provedor/proveedor_edit.js',
+                'resources/js/proveedor/proveedor_edit.js',
                 'resources/css/create/form_create.css',
+                'resources/js/proveedor/proveedor_register.js',
+                'resources/js/producto/producto_register.js',
                 
             ],
             refresh: true,

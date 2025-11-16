@@ -1,5 +1,5 @@
 /* ========================
-   🎨 VARIABLES DE COLOR
+   VARIABLES DE COLOR
 ======================== */
 :root {
     --primary-teal: #32b4a8;
@@ -10,7 +10,7 @@
 }
 
 /* ========================
-   🔄 RESETEO GLOBAL
+   RESETEO GLOBAL
 ======================== */
 * {
     margin: 0;
@@ -24,10 +24,27 @@ body {
     color: var(--dark-text);
     display: flex;
     min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
 }
 
 /* ========================
-   🧭 SIDEBAR
+    INPUTS NUMERICOS
+======================== */
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* ========================
+ SIDEBAR
 ======================== */
 .sidebar {
     width: 250px;
@@ -72,7 +89,7 @@ body {
 }
 
 /* ========================
-   🧩 MAIN
+   MAIN
 ======================== */
 .main {
     flex-grow: 1;
@@ -80,7 +97,7 @@ body {
 }
 
 /* ========================
-   🔝 HEADER
+ HEADER
 ======================== */
 .header {
     display: flex;
@@ -126,8 +143,17 @@ body {
 }
 
 /* ========================
-   🧾 FORMULARIO
+ FORMULARIO
 ======================== */
+.container-form {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px;
+    border: 2px spolid black;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 20px;
+}
+
 form.form-container {
     background-color: var(--primary-white);
     max-width: 650px;
@@ -140,7 +166,10 @@ form.form-container {
 }
 
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative; /* NECESARIO para absolute */
 }
 
 label {
@@ -171,9 +200,24 @@ select:focus {
     box-shadow: 0 0 6px rgba(50, 180, 168, 0.3);
     outline: none;
 }
+/* ========================
+   SMALLS
+======================== */
+.small-red {
+    color: red;
+    font-size: 12px;
+    margin-top: 3px;
+    display: none; /* Oculto por defecto */
+}
+
+
+.mostrar-error {
+    display: block !important; /* solo se mostrará cuando JS le ponga esta clase */
+}
+
 
 /* ========================
-   🔘 BOTONES
+   BOTONES
 ======================== */
 .actions {
     display: flex;
