@@ -12,7 +12,7 @@ class DashboardController extends Controller
 
  public function dashboard()
     {
-        return view('dashboard');
+        return view('layouts.dashboard_admin');
     }
  public function dashboard_admin()
     {

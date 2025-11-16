@@ -3,32 +3,33 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('usuario')->insert([
-            [
-                'id' =>100,
-                'nombre' => 'Juan',
-                'apellido' => 'Pérez',
-                'correo' => 'juan.perez@example.com',
-                'direccion' => 'Calle 123',
-                'clave' => bcrypt('clave123'),
-                'rol_id' => 1,
-            ],
-            [
-                'id' =>200,
-                'nombre' => 'Ana',
-                'apellido' => 'Gómez',
-                'correo' => 'ana.gomez@example.com',
-                'direccion' => 'Av. Siempre Viva 456',
-                'clave' => bcrypt('clave456'),
-                'rol_id' => 2,
-            ],
+        // Usuario normal
+        $usuario = Usuario::create([
+            'id' => 1,
+            'nombre' => 'Diego',
+            'apellido' => 'Bautista',
+            'correo' => 'diego@gmail.com',
+            'direccion' => 'Calle 123',
+            'clave' => Hash::make('12345678'),
         ]);
-    }
+        $usuario->assignRole('user'); // Asignar rol 'user'
 
+        // Usuario admin
+        $admin = Usuario::create([
+            'id' => 2,
+            'nombre' => 'Admin',
+            'apellido' => null,
+            'correo' => 'admin@gmail.com',
+            'direccion' => null,
+            'clave' => Hash::make('123456789'),
+        ]);
+        $admin->assignRole('admin'); // Asignar rol 'admin'
+    }
 }

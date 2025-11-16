@@ -5,37 +5,35 @@ namespace App\Http\Controllers\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log; 
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
-
     public function login(Request $request)
     {
-
         $credentials = $request->validate([
             'correo' => 'required|email',
             'password' => 'required',
         ]);
 
-     
-       if (Auth::guard('web')->attempt(['correo' => $credentials['correo'], 'password' => $credentials['password']])) {
+        if (Auth::guard('web')->attempt(['correo' => $credentials['correo'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
+            $usuario = Auth::guard('web')->user();
 
-            $usuario = Auth::user();
-
-
-            $redirect = match ($usuario->rol_id) {
-                1 => '/dashboard_admin',
-                2 => '/dashboard_empleado',
-                3 => '/dashboard_admin',
-                default => '/dashboard'
-            };
+            // Redirección según rol
+            $redirect = '/dashboard';
+            if ($usuario->hasRole('admin')) {
+                $redirect = '/dashboard_admin';
+            } elseif ($usuario->hasRole('employ')) {
+                $redirect = '/dashboard_empleado';
+            } elseif ($usuario->hasRole('user')) {
+                $redirect = '/dashboard_user';
+            }
 
             return response()->json([
                 'success' => true,
                 'redirect' => $redirect,
-                'rol' => $usuario->rol_id,
+                'rol' => $usuario->getRoleNames(),
             ]);
         }
 
@@ -50,13 +48,11 @@ class LoginController extends Controller
         ]);
     }
 
-   
     public function logins()
     {
         return view('login.login');
     }
 
-  
     public function User_register()
     {
         return view('login.User_register');

@@ -10,17 +10,9 @@
 
 @section('content')
 
-@if ($errors->any())
-    <div class="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
-<form action="{{ route('producto.store') }}" method="POST" class="form-container">
+
+<form action="" method="POST" class="form-container" novalidate>
     @csrf
 
     <!-- Nombre -->
@@ -59,12 +51,7 @@
 
     <!-- Stock y cantidad -->
     <div class="form-group">
-        <label>Cantidad inicial:</label>
-        <input type="number" name="cantidad" min="0" placeholder="Ej: 50" required>
-    </div>
-
-    <div class="form-group">
-        <label>Stock disponible:</label>
+        <label>Cantidad:</label>
         <input type="number" name="stock" min="0" placeholder="Ej: 50" required>
     </div>
 

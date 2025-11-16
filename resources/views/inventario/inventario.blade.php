@@ -4,9 +4,9 @@
 
 @section('styles')
 @vite([
-    'resources/css/inventario/inventario.css',
-    'resources/css/style.css',
-    'resources/js/Producto/inventario.js'
+'resources/css/inventario/inventario.css',
+'resources/css/style.css',
+'resources/js/Producto/inventario.js'
 ])
 @endsection
 
@@ -31,51 +31,49 @@
 </div>
 
 <div class="list-elements">
-    <form name="product-list" id="form-validation" class="element-list" novalidate>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Fecha Caducidad</th>
-                    <th>Dosis</th>
-                    <th>Indicaciones</th>
-                    <th>Lote</th>
-                    <th>Presentación</th>
-                    <th>Proveedor</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($productos as $producto)
-                <tr data-id="{{ $producto->id }}">
-                    <td class="nombre">{{ $producto->nombre }}</td>
-                    <td class="precio">{{ $producto->precio }}</td>
-                    <td class="fecha_caducidad">{{ $producto->fecha_caducidad ?? 'N/A' }}</td>
-                    <td class="dosis">{{ $producto->dosis ?? 'N/A' }}</td>
-                    <td class="indicaciones">{{ $producto->indicaciones ?? 'N/A' }}</td>
-                    <td class="lote">{{ $producto->lote ?? 'N/A' }}</td>
-                    <td class="presentacion">{{ $producto->presentacion ?? 'N/A' }}</td>
-                    <td class="proveedor_id">{{ $producto->proveedor_id ?? 'N/A' }}</td>
-                    <td>
-                        <button type="button" class="btn btn-edit">Editar</button>
-                        <form action="{{ route('producto.destroy', $producto->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
-                                Eliminar
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="9" style="text-align:center;">No hay productos registrados.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Fecha Caducidad</th>
+                <th>Dosis</th>
+                <th>Indicaciones</th>
+                <th>Lote</th>
+                <th>Presentación</th>
+                <th>Stock</th>
+                <th>Proveedor</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($productos as $producto)
+            <tr data-id="{{ $producto->id }}">
+                <td class="nombre">{{ $producto->nombre }}</td>
+                <td class="precio">{{ $producto->precio }}</td>
+                <td class="fecha_caducidad">{{ $producto->fecha_caducidad ?? 'N/A' }}</td>
+                <td class="dosis">{{ $producto->dosis ?? 'N/A' }}</td>
+                <td class="indicaciones">{{ $producto->indicaciones ?? 'N/A' }}</td>
+                <td class="lote">{{ $producto->lote ?? 'N/A' }}</td>
+                <td class="presentacion">{{ $producto->presentacion ?? 'N/A' }}</td>
+                <td class="stock">{{ $producto->stock ?? 'N/A' }}</td>
+                <td class="proveedor_id">{{ $producto->proveedor_id ?? 'N/A' }}</td>
+                <td>
+                    <button type="button" class="btn btn-edit">Editar</button>
+                    <form action="{{ route('producto.destroy', $producto->id) }}" method="POST" style="display:inline;" class="delete-product">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="10" style="text-align:center;">No hay productos registrados.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 </div>
 
 <div class="edit">

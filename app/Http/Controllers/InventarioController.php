@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\InventarioService;
+use App\Services\ProductoService;
 
 class InventarioController extends Controller
 {
     protected $inventarioService;
 
-    public function __construct(InventarioService $inventarioService)
+    public function __construct(ProductoService $inventarioService)
     {
         $this->inventarioService = $inventarioService;
     }

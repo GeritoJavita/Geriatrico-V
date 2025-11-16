@@ -22,16 +22,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rutas protegidas por autenticación solo por usuarios logeados
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard_admin', [DashboardController::class, 'dashboard_admin'])->name('dashboard_admin');
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/inventario', [InventarioController::class, 'index'])->name('inventario.index');
-    Route::resource('inventario', InventarioController::class);
-    Route::resource('producto', ProductoController::class);
-    Route::resource('factura', FacturaController::class);
+    Route::get('/dashboard_admin', [DashboardController::class, 'dashboard_admin'])->middleware('can:dashboard_admin')->name('dashboard_admin');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('can:dashboard_admin')->name('dashboard');
+    Route::get('/inventario', [InventarioController::class, 'index'])->middleware('can:dashboard_admin')->name('inventario.index');
+    Route::resource('inventario', InventarioController::class)->middleware('can:dashboard_admin');
+    Route::resource('producto', ProductoController::class)->middleware('can:dashboard_admin');
+    Route::resource('factura', FacturaController::class)->middleware('can:dashboard_admin');
     Route::resource('proveedor', ProveedorController::class);
-    Route::post('/proveedores', [ProveedorController::class, 'store'])->name('proveedor.store');
-    Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->name('proveedor.update');
-    Route::delete('/proveedores/{id}', [ProveedorController::class, 'destroy'])->name('proveedor.destroy');
+    Route::post('/proveedores', [ProveedorController::class, 'store'])->middleware('can:dashboard_admin')->name('proveedor.store');
+    Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->middleware('can:dashboard_admin')->name('proveedor.update');
+    Route::delete('/proveedores/{id}', [ProveedorController::class, 'destroy'])->middleware('can:dashboard_admin')->name('proveedor.destroy');
 });
 
 

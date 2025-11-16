@@ -3,19 +3,14 @@
 namespace App\Services;
 
 use App\Repositories\ProductoRepository;
-use App\Repositories\InventarioRepository;
 
 class ProductoService
 {
     protected $productoRepository;
-    protected $inventarioRepository;
 
-    public function __construct(
-        ProductoRepository $productoRepository,
-        InventarioRepository $inventarioRepository
-    ) {
+    public function __construct(ProductoRepository $productoRepository)
+    {
         $this->productoRepository = $productoRepository;
-        $this->inventarioRepository = $inventarioRepository;
     }
 
     public function listarProductos()
@@ -23,9 +18,9 @@ class ProductoService
         return $this->productoRepository->getAll();
     }
 
-    public function crearProductoConInventario(array $data)
+    public function crearProducto(array $data)
     {
-        $producto = $this->productoRepository->create([
+        return $this->productoRepository->create([
             'nombre' => $data['nombre'],
             'precio' => $data['precio'],
             'categoria_id' => $data['categoria_id'],
@@ -35,23 +30,26 @@ class ProductoService
             'indicaciones' => $data['indicaciones'] ?? null,
             'lote' => $data['lote'] ?? null,
             'presentacion' => $data['presentacion'] ?? null,
+            'stock' => $data['stock'] ?? null,
         ]);
-
-        $this->inventarioRepository->create([
-            'id_producto' => $producto->id,
-            'cantidad' => $data['cantidad'],
-            'stock' => $data['stock'],
-        ]);
-
-        return $producto;
     }
 
     public function eliminarProducto($id)
     {
         $producto = $this->productoRepository->findById($id);
-        if ($producto->inventario) {
-            $producto->inventario->delete();
-        }
         $producto->delete();
+    }
+
+    public function listar($search = null)
+    {
+        $productos = $search
+            ? $this->productoRepository->search($search)
+            : $this->productoRepository->getAll();
+
+        $inventarios = $search
+            ? $this->productoRepository->search($search)
+            : $this->productoRepository->getAll();
+
+        return compact('productos', 'inventarios');
     }
 }

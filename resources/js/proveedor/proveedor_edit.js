@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         correoError.textContent = '';
 
         const id = document.getElementById("id-edit").value;
-       // notyf.success("el id es"+idEdit.value);
+        // notyf.success("el id es"+idEdit.value);
         const correoTrim = correoEdit.value.trim();
 
         // Validar correo
@@ -91,4 +91,32 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    const deleteForms = document.querySelectorAll('.delete-proveedor-form');
+
+
+    deleteForms.forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // evitamos envío directo
+
+            Swal.fire({
+                title: '¿Seguro que quieres eliminar este proveedor?',
+                text: "Esta acción no se puede deshacer",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // se envía a Laravel
+                }
+            });
+        });
+    });
+
+    // Mostrar notificación si Laravel puso session('success')
+    const successMessage = document.querySelector('meta[name="success-message"]');
+    if (successMessage) {
+        notyf.success(successMessage.content);
+    }
 });

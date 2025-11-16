@@ -1,21 +1,16 @@
 <?php
 
 namespace App\Services;
-use Illuminate\Http\Request;
+
 use App\Repositories\ProductoRepository;
-use App\Repositories\InventarioRepository;
 
 class InventarioService
 {
     protected $productoRepository;
-    protected $inventarioRepository;
 
-    public function __construct(
-        ProductoRepository $productoRepository,
-        InventarioRepository $inventarioRepository
-    ) {
+    public function __construct(ProductoRepository $productoRepository)
+    {
         $this->productoRepository = $productoRepository;
-        $this->inventarioRepository = $inventarioRepository;
     }
 
     public function listar($search = null)
@@ -24,10 +19,6 @@ class InventarioService
             ? $this->productoRepository->search($search)
             : $this->productoRepository->getAll();
 
-        $inventarios = $search
-            ? $this->inventarioRepository->search($search)
-            : $this->inventarioRepository->getAll();
-
-        return compact('productos', 'inventarios');
+        return compact('productos');
     }
 }

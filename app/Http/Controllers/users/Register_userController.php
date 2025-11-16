@@ -20,16 +20,16 @@ class Register_userController
                 'direccion' => 'nullable|string|max:255',
             ]);
 
-            Usuario::create([
+            $usuario = Usuario::create([
                 'id' => $validated['id'],
                 'nombre' => $validated['nombre'],
                 'apellido' => $validated['apellido'],
                 'correo' => $validated['correo'],
                 'direccion' => $validated['direccion'] ?? '',
-                'clave' => bcrypt($validated['password']),
-                'rol_id' => 3
+                'clave' => bcrypt($validated['password'])
             ]);
-
+            $usuario->assignRole('user');
+            
             return response()->json([
                 'success' => true,
                 'message' => 'Usuario registrado correctamente'

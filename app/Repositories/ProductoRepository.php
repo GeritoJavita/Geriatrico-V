@@ -11,27 +11,46 @@ class ProductoRepository
         return Producto::with(['categoria', 'proveedor'])->get();
     }
 
+    public function findById($id)
+    {
+        return Producto::find($id); // o findOrFail($id) si quieres lanzar excepción
+    }
+
     public function create(array $data)
     {
         return Producto::create($data);
     }
 
-    public function findById(int $id)
+    public function update($id, array $data)
     {
-        return Producto::findOrFail($id);
+        $producto = $this->findById($id);
+        if ($producto) {
+            $producto->update($data);
+            return $producto;
+        }
+        return null;
     }
 
-    public function delete(int $id)
+    public function destroy($id)
     {
-        return Producto::destroy($id);
+        $producto = $this->findById($id);
+        if ($producto) {
+            $producto->delete();
+            return true;
+        }
+        return false;
     }
 
     public function search($search)
     {
-        return Producto::query()
-            ->where('nombre', 'like', "%$search%")
-            ->orWhere('id', $search)
-            ->orWhere('proveedor_id', $search)
+        return Producto::with(['categoria', 'proveedor'])
+            ->where(function ($q) use ($search) {
+                $q->where('nombre', 'like', "%$search%")
+                  ->orWhere('id', $search)
+                  ->orWhere('stock', $search)
+                  ->orWhere('precio', $search)
+                  ->orWhere('lote', 'like', "%$search%");
+            })
             ->get();
     }
 }

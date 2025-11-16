@@ -15,7 +15,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a class="no-decor" href="{{ route('dashboard_admin') }}">
-            <h2>Hogar <span>Geriátrico</span></h2>
+            <h2>Hogar <span>Geriátricos</span></h2>
         </a>
 
         <div class="menu">

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('correo', 100)->unique()->nullable();
             $table->string('direccion', 100)->nullable();
             $table->string('clave', 255);
-            $table->foreignId('rol_id')->nullable()->constrained('rol');
             $table->timestamps();
         });
     }

@@ -10,7 +10,13 @@
 </head>
 
 <body>
-    <div id="main-navbar"></div>
+
+ @auth
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit"><i class="fas fa-sign-out-alt"></i> Salir</button>
+    </form>
+@endauth
 
     <div class="divMajor" aria-label="Fondo">
         <div class="content-login">

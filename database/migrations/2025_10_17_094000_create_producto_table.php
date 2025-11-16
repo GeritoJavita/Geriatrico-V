@@ -11,11 +11,12 @@ return new class extends Migration
             $table->id();
             $table->string('nombre', 100);
             $table->decimal('precio', 10, 2);
-            $table->date('fecha_caducidad')->nullable();
-            $table->string('dosis', 100)->nullable();
-            $table->string('indicaciones', 100)->nullable();
-            $table->string('lote', 100)->nullable();
-            $table->string('presentacion', 100)->nullable();
+            $table->date('fecha_caducidad');
+            $table->string('dosis', 100);
+            $table->string('indicaciones', 100);
+            $table->string('lote', 100);
+            $table->string('presentacion', 100);
+            $table->unsignedInteger('stock');//nunca es negativo
             $table->foreignId('categoria_id')->nullable()->constrained('categoria_producto');
             $table->foreignId('proveedor_id')->nullable()->constrained('proveedor');
             $table->timestamps();
