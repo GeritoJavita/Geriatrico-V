@@ -7,7 +7,7 @@ import { formatearPesos } from '../app.js';
 document.addEventListener("DOMContentLoaded", () => {
     const notyf = new Notyf({
         duration: 3500,
-        position: { x: 'right', y: 'top' }
+        position: { x: 'top', y: 'top' }
     });
 
     const editButtons = document.querySelectorAll(".btn-edit");

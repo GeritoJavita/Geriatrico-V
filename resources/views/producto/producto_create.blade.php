@@ -4,7 +4,7 @@
 
 @section('styles')
 @vite(['resources/css/create/form_create.css',
-'resources/js/producto/producto_register.js'])
+'resources/js/producto/producto_regist.js'])
 @endsection
 @section('header', 'Agregar Producto')
 
@@ -87,8 +87,9 @@
         </div>
 
         <div class="form-group">
+            <small class="small-red">*</small>
             <label>Indicaciones:</label>
-            <textarea id="indicaciones" name="indicaciones"></textarea>
+            <textarea id="indicaciones" name="indicaciones" required></textarea>
         </div>
 
         <div class="actions">

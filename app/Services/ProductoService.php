@@ -20,18 +20,10 @@ class ProductoService
 
     public function crearProducto(array $data)
     {
-        return $this->productoRepository->create([
-            'nombre' => $data['nombre'],
-            'precio' => $data['precio'],
-            'categoria_id' => $data['categoria_id'],
-            'proveedor_id' => $data['proveedor_id'],
-            'fecha_caducidad' => $data['fecha_caducidad'] ?? null,
-            'dosis' => $data['dosis'] ?? null,
-            'indicaciones' => $data['indicaciones'] ?? null,
-            'lote' => $data['lote'] ?? null,
-            'presentacion' => $data['presentacion'] ?? null,
-            'stock' => $data['stock'] ?? null,
-        ]);
+        // limpiar precio
+        $data['precio'] = preg_replace('/[^\d]/', '', $data['precio']);
+
+        return $this->productoRepository->create($data);
     }
 
     public function eliminarProducto($id)

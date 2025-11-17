@@ -6,7 +6,7 @@
 @vite([
 'resources/css/inventario/inventario.css',
 'resources/css/style.css',
-'resources/js/Producto/inventario.js'
+'resources/js/producto/inventario.js'
 ])
 @endsection
 
@@ -108,6 +108,10 @@
             <div class="item-input">
                 <span>Presentación</span>
                 <input id="presentacion-edit" name="presentacion" required>
+            </div>
+            <div class="item-input">
+                <span>Stock</span>
+                <input id="stock-edit" name="stock" required>
             </div>
         </div>
 

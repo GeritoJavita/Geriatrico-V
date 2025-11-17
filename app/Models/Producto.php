@@ -19,6 +19,7 @@ class Producto extends Model
         'indicaciones',
         'lote',
         'presentacion',
+        'stock',
         'categoria_id',
         'proveedor_id'
     ];

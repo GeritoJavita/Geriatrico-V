@@ -1,8 +1,8 @@
 import 'notyf/notyf.min.css';
 import Swal from 'sweetalert2';
 import { Notyf } from 'notyf';
-import { validarCorreo } from '../app.js';
 import { formatearPesos } from '../app.js';
+import { limpiarFormatoPesos } from '../app.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // VALIDACIÓN UNO A UNO
         for (const grupo of grupos) {
-            const input = grupo.querySelector('input, select');
+            const input = grupo.querySelector('input, select, textarea');
             const small = grupo.querySelector('.small-red');
 
             if (input && input.hasAttribute("required") && !input.value.trim()) {
@@ -57,14 +57,50 @@ document.addEventListener("DOMContentLoaded", () => {
             stock.focus();
             isvalid = false;
         }
-        if(!isvalid){   
+        if (!isvalid) {
             notyf.error('Campos inválidos o no llenados');
             return;
         }
-        // TODO CORRECTO
-        notyf.success('Formulario válido');
+        Swal.fire({
+            title: "¿Quieres crear este producto?",
+            showCancelButton: true,
+            confirmButtonText: "Sí, crear",
+        }).then(async (result) => {
 
-        fetch
+            if (result.isConfirmed) {
+                const formData = new FormData(addform);
+                formData.set("precio", limpiarFormatoPesos(precio.value));
+
+                fetch('/producto', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',//es para json
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            notyf.success('Producto creado con éxito');
+                            addform.reset();
+                            setTimeout(() => { window.location.reload() }, 1000);
+                        } else {
+                            notyf.error(data.message || 'Error al crear el producto');
+                            console.error(data);
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        notyf.error('Error al conectar con el servidor');
+                        alert(error);
+                    });
+            }else if (result.isDismissed) {
+                Swal.fire("Producto no creado", "", "info");
+            }
+        });
+
 
 
 

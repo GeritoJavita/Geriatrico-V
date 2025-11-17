@@ -32,19 +32,36 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:255',
-            'categoria_id' => 'required|exists:categoria_producto,id',
-            'proveedor_id' => 'required|exists:proveedor,id',
-            'precio' => 'required|numeric|min:0',
-            'cantidad' => 'required|integer|min:0',
-            'stock' => 'required|integer|min:0',
-        ]);
+        try {
+            // 1. VALIDACIÓN DE DATOS
+            $request->validate([
+                'nombre' => 'required|string|max:100',
+                'precio' => 'required|string',
+                'fecha_caducidad' => 'required|date',
+                'dosis' => 'required|string|max:100',
+                'indicaciones' => 'nullable|string|max:100',
+                'lote' => 'required|string|max:100',
+                'presentacion' => 'required|string|max:100',
+                'stock' => 'required|integer|min:0',
+                'categoria_id' => 'nullable|integer|exists:categoria_producto,id',
+                'proveedor_id' => 'nullable|integer|exists:proveedor,id',
+            ]);
 
-        $this->productoService->crearProductoConInventario($request->all());
+            // 2. CREAR PRODUCTO desde el service
+            $producto = $this->productoService->crearProducto($request->all());
 
-        return redirect()->route('inventario.index')
-            ->with('success', 'Producto e inventario creados correctamente.');
+            // 3. RESPUESTA JSON (FUNCIONA PARA TU FRONTEND)
+            return response()->json([
+                'success' => true,
+                'message' => 'Producto creado correctamente',
+                'producto' => $producto
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al crear producto: ' . $e->getMessage()
+            ]);
+        }
     }
 
     public function destroy($id)
@@ -58,7 +75,7 @@ class ProductoController extends Controller
 
     public function actualizar_producto(Request $request)
     {
-        
+
         try {
             $producto = Producto::findOrFail($request->id);
 
@@ -71,6 +88,7 @@ class ProductoController extends Controller
                 'indicaciones' => $request->indicaciones,
                 'lote' => $request->lote,
                 'presentacion' => $request->presentacion,
+                'stock' => $request->stock,
             ]);
 
             return response()->json(['success' => true]);

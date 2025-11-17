@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombreEdit = document.getElementById("nombre-edit");
     const precioEdit = document.getElementById("precio-edit");
     const indicacionesEdit = document.getElementById("indicaciones-edit");
+    const stockEdit = document.getElementById("stock-edit");
     const loteEdit = document.getElementById("lote-edit");
     const presentacionEdit = document.getElementById("presentacion-edit");
     const btnVaciar = document.getElementById("btn-vaciar");
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nombreEdit.value = fila.querySelector(".nombre").textContent.trim();
             precioEdit.value = formatearPesos(fila.querySelector(".precio").textContent.trim());
             indicacionesEdit.value = fila.querySelector(".indicaciones").textContent.trim();
+            stockEdit.value = fila.querySelector(".stock").textContent.trim();
             loteEdit.value = fila.querySelector(".lote").textContent.trim();
             presentacionEdit.value = fila.querySelector(".presentacion").textContent.trim();
 
