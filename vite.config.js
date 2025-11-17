@@ -20,6 +20,7 @@ export default defineConfig({
                 'resources/js/proveedor/proveedor_register.js',
                 'resources/js/producto/producto_regist.js',
                 'resources/js/residente/residente_register.js',
+                'resources/js/residente/residente_search.js',
                 
             ],
             refresh: true,

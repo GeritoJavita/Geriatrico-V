@@ -52,4 +52,19 @@ class ResidenteService
             ? $this->residenteRepository->search($search)
             : $this->residenteRepository->getAll();
     }
+
+    public function buscarResidentes($search)
+    {
+        $residentes = $this->residenteRepository->search($search);
+        
+        $residentes->each(function ($residente) {
+            if ($residente->fecha_nacimiento) {
+                $residente->edad = intval(Carbon::parse($residente->fecha_nacimiento)->diffInYears(Carbon::now()));
+            } else {
+                $residente->edad = null;
+            }
+        });
+
+        return $residentes;
+    }
 }

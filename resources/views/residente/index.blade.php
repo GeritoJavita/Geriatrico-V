@@ -4,7 +4,8 @@
 
 @section('styles')
 @vite([
-'resources/css/inventario/inventario.css'
+'resources/css/inventario/inventario.css',
+'resources/js/residente/residente_search.js'
 ])
 @endsection
 @section('header', 'Residentes')
@@ -13,8 +14,17 @@
 
 <div class="inventory-header">
     <h2>Pacientes Registrados</h2>
+    <form method="GET" action="{{ route('residente.index') }}" id="search-form">
+        <input type="text" 
+               name="search" 
+               id="search-input"
+               placeholder="Buscar por Nombre, Apellido, ID..." 
+               value="{{ request('search') }}"
+               autocomplete="off">
+    </form>
     <a href="{{ route('residente.create') }}" class="btn">Agregar Residente</a>
 </div>
+
 <div class="list-elements">
     <table>
         <thead>
@@ -24,23 +34,28 @@
                 <th>Edad</th>
                 <th>Género</th>
                 <th>Habitación</th>
+                <th>Cama</th>
                 <th>Fecha de Ingreso</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="residentes-tbody">
             @forelse ($residentes as $residente)
             <tr data-id="{{ $residente->id }}">
                 <td class="id">{{ $residente->id }}</td>
-                <td class="nombre">{{ $residente->nombre }}</td>
-                <td class="edad">{{ $residente->edad }}</td>    
+                <td class="nombre">{{ $residente->nombre }} {{ $residente->apellido }}</td>
+                <td class="edad">{{ $residente->edad }}</td>
                 <td class="genero">{{ $residente->genero }}</td>
-                <td class="habitacion">{{ $residente->habitacion }}</td>
-                <td class="fecha_ingreso">{{ $residente->fecha_ingreso }}</td> 
+                <td class="habitacion">{{ $residente->habitacion ?? 'N/A' }}</td>
+                <td class="cama">{{ $residente->cama ?? 'N/A' }}</td>
+                <td class="fecha_ingreso">{{ $residente->fecha_ingreso }}</td>
+                <td>
+                    <button type="button" class="btn btn-edit">Ver</button>
+                </td>
             </tr>
             @empty
             <tr>
-                <td colspan="7">No hay residentes registrados.</td>
+                <td colspan="8">No hay residentes registrados.</td>
             </tr>
             @endforelse
         </tbody>

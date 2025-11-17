@@ -15,11 +15,25 @@ class ResidenteController extends Controller
         $this->residenteService = $residenteService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $residentes = $this->residenteService->listarResidentes();
+        $search = $request->get('search');
+        $residentes = $search 
+            ? $this->residenteService->buscarResidentes($search)
+            : $this->residenteService->listarResidentes();
+
+        // Si es petición AJAX, devolver JSON
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'residentes' => $residentes
+            ]);
+        }
+
+        // Si no es AJAX, devolver vista normal
         return view('residente.index', compact('residentes'));
     }
+
     public function create()
     {
         return view('residente.create');
