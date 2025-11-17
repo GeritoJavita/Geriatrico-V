@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\ResidenteRepository;
+use Carbon\Carbon;
 
 class ResidenteService
 {
@@ -13,9 +14,21 @@ class ResidenteService
         $this->residenteRepository = $residenteRepository;
     }
 
+
     public function listarResidentes()
     {
-        return $this->residenteRepository->getAll();
+        $residentes = $this->residenteRepository->getAll();
+
+        $residentes->each(function ($residente) {
+            if ($residente->fecha_nacimiento) {
+                // Carbon interpreta automáticamente formato Y-m-d de date
+                $residente->edad = intval(Carbon::parse($residente->fecha_nacimiento)->diffInYears(Carbon::now()));
+            } else {
+                $residente->edad = null;
+            }
+        });
+
+        return $residentes;
     }
 
     public function crearResidente(array $data)

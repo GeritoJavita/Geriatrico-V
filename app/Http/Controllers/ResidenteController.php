@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\ResidenteService;
+use Illuminate\Validation\ValidationException;
 
 class ResidenteController extends Controller
 {
@@ -19,7 +20,7 @@ class ResidenteController extends Controller
         $residentes = $this->residenteService->listarResidentes();
         return view('residente.index', compact('residentes'));
     }
-     public function create()
+    public function create()
     {
         return view('residente.create');
     }
@@ -28,6 +29,7 @@ class ResidenteController extends Controller
     {
         try {
             $request->validate([
+                'id' => 'required|integer|min:1',
                 'nombre' => 'required|string|max:100',
                 'apellido' => 'required|string|max:100',
                 'fecha_nacimiento' => 'required|date',
@@ -50,6 +52,13 @@ class ResidenteController extends Controller
                 'success' => true,
                 'message' => 'Residente creado correctamente',
                 'residente' => $residente
+            ]);
+        } catch (ValidationException $e) {
+            // Devuelve todos los errores de validación en un array
+            return response()->json([
+                'success' => false,
+                'message' => 'Errores de validación',
+                'errors' => $e->errors() // <-- aquí están todos los errores por campo
             ]);
         } catch (\Exception $e) {
             return response()->json([

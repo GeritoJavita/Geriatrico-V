@@ -19,14 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /*FORMA DE PONER PRECIO COLOMBIANO A LOS INPUTS*/
 
     const addform = document.getElementById('form-validation');
-    const nombre = document.getElementById('nombre');
-    const precioInput = document.getElementById('precio');
-    const caategoria = document.getElementById('categoria_id');
     const stock = document.getElementById('stock');
-    const lote = document.getElementById('lote');
-    const fecha_caducidad = document.getElementById('fecha_caducidad');
-    const presentacion = document.getElementById('presentacion');
-    const dosis = document.getElementById('dosis');
+   
 
 
     addform.addEventListener('submit', (e) => {

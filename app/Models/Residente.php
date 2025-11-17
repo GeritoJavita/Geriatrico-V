@@ -9,6 +9,7 @@ class Residente extends Model
     protected $table = 'residente';
 
     protected $fillable = [
+        'id',
         'nombre',
         'apellido',
         'fecha_nacimiento',

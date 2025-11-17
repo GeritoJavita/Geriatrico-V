@@ -19,6 +19,7 @@ export default defineConfig({
                 'resources/css/create/form_create.css',
                 'resources/js/proveedor/proveedor_register.js',
                 'resources/js/producto/producto_regist.js',
+                'resources/js/residente/residente_register.js',
                 
             ],
             refresh: true,
