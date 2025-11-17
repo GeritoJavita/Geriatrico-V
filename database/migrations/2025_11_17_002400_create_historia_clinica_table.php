@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('antecedentes', 45)->nullable();
             $table->string('diagnostico', 256)->nullable();
             $table->string('tratamientos', 256)->nullable();
-            $table->foreignId('residente_id')->nullable()->constrained('residente');
+
+            // Columna FK que coincide con el tipo de residente.id
+            $table->bigInteger('residente_id')->nullable();
+            $table->foreign('residente_id')->references('id')->on('residente');
+
             $table->timestamps();
         });
     }

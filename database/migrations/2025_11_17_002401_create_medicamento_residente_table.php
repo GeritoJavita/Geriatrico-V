@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('fecha_inicio', 45);
             $table->string('fecha_fin', 45);
             $table->foreignId('producto_id')->nullable()->constrained('producto');
-            $table->foreignId('residente_id')->nullable()->constrained('residente');
+            $table->bigInteger('residente_id')->nullable();
+            $table->foreign('residente_id')->references('id')->on('residente');
             $table->timestamps();
         });
     }

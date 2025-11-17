@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('residente_familiar', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('residente_id')->nullable()->constrained('residente');
+            $table->bigInteger('residente_id')->nullable();
+            $table->foreign('residente_id')->references('id')->on('residente');
             $table->string('parentesco', 20)->nullable();
-            $table->foreignId('familiar_id')->nullable()->constrained('familiar');
-            $table->timestamps();
+            $table->bigInteger('familiar_id')->nullable();
+            $table->foreign('familiar_id')->references('id')->on('familiar');
+            $table->timestamps();  
         });
     }
 

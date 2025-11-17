@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('tipo', 45)->nullable();
             $table->string('descripcion', 45)->nullable();
             $table->date('fecha')->nullable();
-            $table->foreignId('familiar_id')->nullable()->constrained('familiar');
+            $table->bigInteger('familiar_id')->nullable();
+            $table->foreign('familiar_id')->references('id')->on('familiar');
             $table->timestamps();
         });
     }

@@ -19,6 +19,10 @@ class ResidenteController extends Controller
         $residentes = $this->residenteService->listarResidentes();
         return view('residente.index', compact('residentes'));
     }
+     public function create()
+    {
+        return view('residente.create');
+    }
 
     public function store(Request $request)
     {

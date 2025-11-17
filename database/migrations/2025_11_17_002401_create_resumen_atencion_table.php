@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('notas_enferme', 45)->nullable();
             $table->string('estado_general', 45)->nullable();
             $table->foreignId('empleado_id')->nullable()->constrained('empleado');
-            $table->foreignId('residente_id')->nullable()->constrained('residente');
+            $table->bigInteger('residente_id')->nullable();
+            $table->foreign('residente_id')->references('id')->on('residente');
             $table->timestamps();
         });
     }

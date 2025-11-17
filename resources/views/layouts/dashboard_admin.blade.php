@@ -19,7 +19,7 @@
         </a>
 
         <div class="menu">
-            <a href="#"><i class="fas fa-users"></i> Pacientes</a>
+            <a href="{{ route('residente.index') }}"><i class="fas fa-users"></i> Pacientes</a>
             <a href="#"><i class="fas fa-user-nurse"></i> Colaboradores</a>
             <a href="{{ route('inventario.index') }}" class="{{ request()->is('inventario') ? 'active' : '' }}">
                 <i class="fas fa-boxes"></i> Inventario

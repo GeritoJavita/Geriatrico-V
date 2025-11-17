@@ -67,4 +67,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('medicamento_residente', MedicamentoResidenteController::class)->middleware('can:dashboard_admin');
     Route::resource('detalle_producto', DetalleProductoController::class)->middleware('can:dashboard_admin');
     // Ruta personalizada adicional
-    Route::post('/Actualizar_pro', [ProductoController::class, 'actualizar_producto'])->name('actualizar_producto');});
+    Route::post('/Actualizar_pro', [ProductoController::class, 'actualizar_producto'])->name('actualizar_producto');
+});

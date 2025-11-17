@@ -5,7 +5,6 @@
 @section('styles')
 @vite([
 'resources/css/inventario/inventario.css',
-'resources/css/style.css',
 'resources/js/producto/inventario.js'
 ])
 @endsection

@@ -21,8 +21,14 @@ return new class extends Migration
             $table->double('frecuencia_resp')->nullable();
             $table->double('frecuencia_card')->nullable();
             $table->string('reporte_signos')->nullable();
-            $table->foreignId('residente_id')->nullable()->constrained('residente');
+
+            // Columna compatible con residente.id manual
+            $table->bigInteger('residente_id')->nullable();
+            $table->foreign('residente_id')->references('id')->on('residente');
+
+            // Empleado sigue siendo autoincremental, puede usar foreignId
             $table->foreignId('empleado_id')->nullable()->constrained('empleado');
+
             $table->timestamps();
         });
     }

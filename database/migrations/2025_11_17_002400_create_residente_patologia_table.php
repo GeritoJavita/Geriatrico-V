@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('residente_patologia', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patologia_id')->nullable()->constrained('patologia');
-            $table->foreignId('residente_id')->nullable()->constrained('residente');
+            $table->bigInteger('residente_id')->nullable(); // coincide con residente.id manual
+            $table->foreign('residente_id')->references('id')->on('residente');
+            $table->foreignId('patologia_id')->nullable()->constrained('patologia'); // autoincremental
             $table->timestamps();
         });
     }

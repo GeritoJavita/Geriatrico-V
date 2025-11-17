@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Inventario')
+@section('title', 'Inventarios')
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/inventario.css') }}">
@@ -21,7 +21,7 @@
     </div>
     <div class="filter-options">
         <select name="categoria">
-            <option value="">Todas las categoríasss</option>
+            <option value="">Todas las categorías</option>
             <option value="medicamentos">Medicamentos</option>
             <option value="insumos">Insumos médicos</option>
             <option value="limpieza">Productos de limpieza</option>

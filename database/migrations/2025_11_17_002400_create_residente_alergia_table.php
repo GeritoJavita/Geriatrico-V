@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('residente_alergia', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('residente_id')->nullable()->constrained('residente');
+            $table->bigInteger('residente_id')->nullable();
+            $table->foreign('residente_id')->references('id')->on('residente');
             $table->foreignId('alergia_id')->nullable()->constrained('alergia');
             $table->timestamps();
         });
