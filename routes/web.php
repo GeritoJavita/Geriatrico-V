@@ -4,12 +4,27 @@ use App\Http\Controllers\users\LoginController;
 use App\Http\Controllers\users\Register_userController;
 use App\Http\Controllers\dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\InventarioController;
-use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\FacturaController;
-use App\Http\Controllers\ProveedorController;
-use App\Models\Proveedor;
+
+use App\Http\Controllers\{
+    AuthController,
+    InventarioController,
+    ProductoController,
+    FacturaController,
+    ProveedorController,
+    CategoriaProductoController,
+    AlergiaController,
+    PatologiaController,
+    SignosVitalesController,
+    HistoriaClinicaController,
+    ResidenteController,
+    EmpleadoController,
+    FamiliarController,
+    QuejaNovedadController,
+    ResumenAtencionController,
+    MedicamentoResidenteController,
+    DetalleProductoController
+};
+
 
 // Ruta para mostrar index principal
 Route::get('/', function () {
@@ -33,15 +48,23 @@ Route::post('/Send_register', [Register_userController::class, 'send_register'])
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard_admin', [DashboardController::class, 'dashboard_admin'])->middleware('can:dashboard_admin')->name('dashboard_admin');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('can:dashboard_admin')->name('dashboard');
-    Route::get('/inventario', [InventarioController::class, 'index'])->middleware('can:dashboard_admin')->name('inventario.index');
+
+    // Resources - Cada uno crea automáticamente: index, create, store, show, edit, update, destroy
     Route::resource('inventario', InventarioController::class)->middleware('can:dashboard_admin');
     Route::resource('producto', ProductoController::class)->middleware('can:dashboard_admin');
     Route::resource('factura', FacturaController::class)->middleware('can:dashboard_admin');
-    Route::resource('proveedor', ProveedorController::class);
-    Route::post('/proveedores', [ProveedorController::class, 'store'])->middleware('can:dashboard_admin')->name('proveedor.store');
-    Route::put('/proveedores/{id}', [ProveedorController::class, 'update'])->middleware('can:dashboard_admin')->name('proveedor.update');
-    Route::delete('/proveedores/{id}', [ProveedorController::class, 'destroy'])->middleware('can:dashboard_admin')->name('proveedor.destroy');
-});
-
-
-
+    Route::resource('proveedor', ProveedorController::class)->middleware('can:dashboard_admin');
+    Route::resource('categoria_producto', CategoriaProductoController::class)->middleware('can:dashboard_admin');
+    Route::resource('alergia', AlergiaController::class)->middleware('can:dashboard_admin');
+    Route::resource('patologia', PatologiaController::class)->middleware('can:dashboard_admin');
+    Route::resource('signos_vitales', SignosVitalesController::class)->middleware('can:dashboard_admin');
+    Route::resource('historia_clinica', HistoriaClinicaController::class)->middleware('can:dashboard_admin');
+    Route::resource('residente', ResidenteController::class)->middleware('can:dashboard_admin');
+    Route::resource('empleado', EmpleadoController::class)->middleware('can:dashboard_admin');
+    Route::resource('familiar', FamiliarController::class)->middleware('can:dashboard_admin');
+    Route::resource('queja_novedad', QuejaNovedadController::class)->middleware('can:dashboard_admin');
+    Route::resource('resumen_atencion', ResumenAtencionController::class)->middleware('can:dashboard_admin');
+    Route::resource('medicamento_residente', MedicamentoResidenteController::class)->middleware('can:dashboard_admin');
+    Route::resource('detalle_producto', DetalleProductoController::class)->middleware('can:dashboard_admin');
+    // Ruta personalizada adicional
+    Route::post('/Actualizar_pro', [ProductoController::class, 'actualizar_producto'])->name('actualizar_producto');});

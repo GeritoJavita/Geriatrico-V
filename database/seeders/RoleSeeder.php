@@ -22,5 +22,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'inventario.index.destroy'])->assignRole([$rol1,$rol2]);
         Permission::create(['name'=>'inventario.index.create.producto'])->assignRole([$rol1,$rol2]);
         Permission::create(['name'=>'inventario.index.proveedor'])->assignRole([$rol1,$rol2]);
+
+        
     }
 }
