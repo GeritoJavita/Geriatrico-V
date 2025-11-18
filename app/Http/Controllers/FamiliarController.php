@@ -24,6 +24,7 @@ class FamiliarController extends Controller
     {
         try {
             $request->validate([
+                'id' => 'required|integer|min:1',
                 'nombre' => 'required|string|max:100',
                 'apellido' => 'required|string|max:100',
                 'correo' => 'required|email|max:100',

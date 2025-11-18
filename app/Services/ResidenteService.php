@@ -78,4 +78,60 @@ class ResidenteService
         
         return $residente;
     }
+
+    public function crearResidenteConRelaciones(array $dataResidente, array $alergias = [], array $patologias = [])
+    {
+        // 1. Crear el residente PRIMERO con su ID manual
+        $residente = $this->residenteRepository->create($dataResidente);
+        
+        // Verificar que el residente se creó correctamente
+        if (!$residente || !$residente->id) {
+            throw new \Exception('No se pudo crear el residente. Asegúrate de proporcionar un ID válido.');
+        }
+        
+        // 2. Procesar alergias si existen
+        if (!empty($alergias) && is_array($alergias)) {
+            $alergiaIds = [];
+            foreach ($alergias as $alergiaData) {
+                if (isset($alergiaData['nombre'])) {
+                    // Buscar o crear la alergia
+                    $alergia = \App\Models\Alergia::firstOrCreate(
+                        ['nombre' => $alergiaData['nombre']],
+                        ['fecha_diagnostico' => $alergiaData['fecha'] ?? now()]
+                    );
+                    
+                    $alergiaIds[] = $alergia->id;
+                }
+            }
+            
+            // Asociar todas las alergias de una vez
+            if (!empty($alergiaIds)) {
+                $residente->alergias()->sync($alergiaIds);
+            }
+        }
+        
+        // 3. Procesar patologías si existen
+        if (!empty($patologias) && is_array($patologias)) {
+            $patologiaIds = [];
+            foreach ($patologias as $patologiaData) {
+                if (isset($patologiaData['nombre'])) {
+                    // Buscar o crear la patología
+                    $patologia = \App\Models\Patologia::firstOrCreate(
+                        ['nombre' => $patologiaData['nombre']],
+                        ['fecha_diagnostico' => $patologiaData['fecha'] ?? now()]
+                    );
+                    
+                    $patologiaIds[] = $patologia->id;
+                }
+            }
+            
+            // Asociar todas las patologías de una vez
+            if (!empty($patologiaIds)) {
+                $residente->patologias()->sync($patologiaIds);
+            }
+        }
+        
+        // Recargar el residente con sus relaciones
+        return $residente->fresh(['alergias', 'patologias']);
+    }
 }
