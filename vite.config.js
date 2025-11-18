@@ -23,6 +23,7 @@ export default defineConfig({
                 'resources/js/residente/residente_search.js',
                 'resources/js/empleado/empleado_registro.js',
                 'resources/js/empleado/empleado_search.js',
+                'resources/js/residente/look.js',
            
                 
             ],

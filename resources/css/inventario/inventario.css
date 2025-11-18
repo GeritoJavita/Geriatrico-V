@@ -21,7 +21,7 @@ a {
     background: var(--primary-blue);
 }
 
-.btn.btn-normal{
+.btn.btn-normal {
     margin-top: 4px;
     background-color: var(--dark-text);
 }
@@ -238,7 +238,7 @@ td {
 }
 
 .btn {
-    
+
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 8px;
@@ -342,8 +342,9 @@ td {
     flex-wrap: nowrap;
     gap: 10px;
 }
+
 /* ---- Residente ---- */
-.container-r{
+.container-r {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
@@ -353,7 +354,7 @@ td {
 }
 
 /* ---- img-residente ---- */
-.img-residente{
+.img-residente {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -361,7 +362,7 @@ td {
 }
 
 
-.first-data{
+.first-data {
     display: flex;
     margin-top: 20px;
     display: flex;
@@ -372,23 +373,27 @@ td {
     width: 100%;
 }
 
-.first-data img{
+.first-data img {
     width: 200px;
     height: 200px;
     display: flex;
-    align-items: center;   /* Centra verticalmente */
-    justify-content: center; /* (Opcional) centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    justify-content: center;
+    /* (Opcional) centra horizontalmente */
     background-color: #e7cbcb;
     border-radius: 30px;
 }
-.first-data span{
+
+.first-data span {
     font-weight: bold;
     background-color: var(--primary-green-light);
     color: white;
     padding: 5px 10px;
     border-radius: 8px;
 }
-.principal-data{
+
+.principal-data {
     width: 100%;
     padding: 20px;
     border: 1px solid #ccc;
@@ -398,15 +403,15 @@ td {
 
 }
 
-.principal-data p{
+.principal-data p {
     width: 100%;
     background-color: rgb(255, 255, 255);
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius:  8px;
+    border-radius: 8px;
 }
 
-.secundary-data{
+.secundary-data {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -417,12 +422,14 @@ td {
     width: 100%;
 }
 
-.third-data{
-    display: flex;;
+.third-data {
+    display: flex;
+    ;
     flex-wrap: wrap;
     width: 100%;
     column-gap: 20px;
-    row-gap: 10px;         /* espacio vertical */
+    row-gap: 10px;
+    /* espacio vertical */
     align-items: flex-start;
     padding: 20px;
     border: 1px solid #ccc;
@@ -430,15 +437,17 @@ td {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
-.third-data p{
-    min-width:290px;
+
+.third-data p {
+    min-width: 290px;
 }
 
-.third-data span{
+.third-data span {
     font-weight: bold;
 }
-.general-data{
-    width:100%;
+
+.general-data {
+    width: 100%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
@@ -469,6 +478,55 @@ td {
     font-size: 16px;
     color: #888;
 }
+
+/* ========================
+    Modals
+======================== */
+
+.pantalla-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(36, 35, 35, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+
+    /* ESTO es lo que centra tu modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-modal {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    background: white;
+}
+
+.form-group {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+    /* NECESARIO para absolute */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    display: block;
+    color: var(--dark-text);
+}
+
+
+
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {

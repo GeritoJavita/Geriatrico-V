@@ -23,11 +23,12 @@ return new class extends Migration
             $table->string('telefono_emerg', 45);
             $table->string('habitacion', 10);
             $table->integer('cama');
-            $table->string('condicion_medica', 45);
+            $table->string('condicion_medica', 255);
             $table->string('direccion', 45);
             $table->double('altura');
             $table->double('peso');
             $table->string('eps', 45);
+            $table->string('ruta', 255)->nullable();
             $table->timestamps();
         });
     }

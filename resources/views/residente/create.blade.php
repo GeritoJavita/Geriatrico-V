@@ -73,12 +73,24 @@
         <div class="form-group">
             <small class="small-red">*</small>
             <label>Habitación:</label>
-            <input id="habitacion" type="number" name="habitacion" required>
+            <select id="habitacion" name="habitacion" required>
+                <option value="">Selecciona #habitacion</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
         </div>
         <div class="form-group">
             <small class="small-red">*</small>
             <label>Cama:</label>
-            <input id="cama" type="number" name="cama" required>
+            <select id="cama" name="cama" required>
+                <option value="">Selecciona #cama</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
         </div>
         <div class="form-group">
             <small class="small-red">*</small>
@@ -92,18 +104,52 @@
         </div>
         <div class="form-group">
             <small class="small-red">*</small>
-            <label>Peso:</label>
+            <label>Peso kg:</label>
             <input id="peso" type="number" name="peso" placeholder="En kilos" required>
         </div>
         <div class="form-group">
+
             <small class="small-red">*</small>
-            <label>Altura:</label>
+            <label>Altura m:</label>
             <input id="altura" type="number" name="altura" placeholder="En centímetros" required>
         </div>
         <div class="form-group">
             <small class="small-red">*</small>
             <label>Eps:</label>
-            <input id="eps" type="text" name="eps" required>
+            <select id="eps" name="eps" class="form-control" required>
+                <option value="">Selecciona una EPS</option>
+
+                <option>Aliansalud EPS</option>
+                <option>Anas Wayuu EPSI</option>
+                <option>Asmet Salud</option>
+                <option>Asociación Indígena del Cauca EPSI</option>
+                <option>Capital Salud EPS-S</option>
+                <option>Cajacopi Atlántico</option>
+                <option>Capresoca</option>
+                <option>Comfachocó</option>
+                <option>Comfaoriente</option>
+                <option>Comfenalco Valle</option>
+                <option>Compensar EPS</option>
+                <option>Coosalud EPS</option>
+                <option>Dusakawi EPSI</option>
+                <option>Emssanar E.S.S.</option>
+                <option>Empresas Públicas de Medellín (EPM)</option>
+                <option>EPS Familiar de Colombia</option>
+                <option>EPS Sanitas</option>
+                <option>EPS Sura</option>
+                <option>Famisanar</option>
+                <option>Fondo de Pasivo Social de Ferrocarriles</option>
+                <option>Mallamas EPSI</option>
+                <option>Mutual Ser</option>
+                <option>Nueva EPS</option>
+                <option>Pijaos Salud EPSI</option>
+                <option>Salud Mía</option>
+                <option>Salud Total EPS S.A.</option>
+                <option>Savia Salud EPS</option>
+                <option>Servicio Occidental de Salud (SOS)</option>
+            </select>
+            </select>
+
         </div>
         <div class="form-group">
             <small class="small-red">*</small>
@@ -116,8 +162,7 @@
     </form>
 </div>
 
-
-
-
-
+<script>
+    const rutaResidenteIndex = "{{ route('residente.index') }}";
+</script>
 @endsection

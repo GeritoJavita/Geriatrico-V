@@ -9,24 +9,6 @@
     --dark-text: #333333;
 }
 
-/* ========================
-   RESETEO GLOBAL
-======================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: var(--light-bg);
-    color: var(--dark-text);
-    display: flex;
-    min-height: 100vh;
-    height: auto;
-    overflow-y: auto;
-}
 
 /* ========================
     INPUTS NUMERICOS
@@ -41,74 +23,6 @@ input[type=number]::-webkit-outer-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
-}
-
-/* ========================
- SIDEBAR
-======================== */
-.sidebar {
-    width: 250px;
-    background: linear-gradient(180deg, var(--primary-teal), var(--primary-blue));
-    color: var(--primary-white);
-    padding: 2rem 1.2rem;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
-}
-
-.sidebar h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.sidebar h2 span {
-    color: var(--primary-blue);
-    font-weight: bold;
-}
-
-.menu a {
-    display: flex;
-    align-items: center;
-    color: var(--primary-white);
-    text-decoration: none;
-    padding: 0.8rem 1rem;
-    border-radius: 10px;
-    margin-bottom: 0.6rem;
-    transition: 0.3s, transform 0.2s;
-}
-
-.menu a i {
-    margin-right: 10px;
-}
-
-.menu a:hover,
-.menu a.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateX(5px);
-}
-
-/* ========================
-   MAIN
-======================== */
-.main {
-    flex-grow: 1;
-    padding: 2rem;
-}
-
-/* ========================
- HEADER
-======================== */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--primary-blue);
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-    color: white;
 }
 
 .header h1 {
@@ -200,6 +114,15 @@ select:focus {
     box-shadow: 0 0 6px rgba(50, 180, 168, 0.3);
     outline: none;
 }
+
+input[list]::-webkit-calendar-picker-indicator {
+    display: none !important; /* Oculta el ícono feo de algunos navegadores */
+}
+
+datalist option {
+    font-size: 1rem;
+    padding: 5px;
+}
 /* ========================
    SMALLS
 ======================== */
@@ -257,6 +180,7 @@ a {
 .btn.cancel:hover {
     background-color: #c0392b;
 }
+
 
 /* ========================
    ⚠️ ERRORES

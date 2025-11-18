@@ -18,7 +18,7 @@ class ResidenteController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $residentes = $search 
+        $residentes = $search
             ? $this->residenteService->buscarResidentes($search)
             : $this->residenteService->listarResidentes();
 
@@ -38,12 +38,16 @@ class ResidenteController extends Controller
     {
         return view('residente.create');
     }
+    public function signos_create($id)
+    {
+        return view('residente.signos_create', compact('id'));
+    }
 
     public function show($id)
     {
         try {
             $residente = $this->residenteService->obtenerResidentePorId($id);
-            
+
             if (!$residente) {
                 return response()->json([
                     'success' => false,
@@ -84,7 +88,7 @@ class ResidenteController extends Controller
 
             // Obtener datos del residente
             $dataResidente = $request->all();
-            
+
             // Obtener alergias y patologías si existen
             $alergias = $request->has('alergias') ? json_decode($request->alergias, true) : [];
             $patologias = $request->has('patologias') ? json_decode($request->patologias, true) : [];

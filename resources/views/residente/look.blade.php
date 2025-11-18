@@ -5,7 +5,10 @@
 @section('styles')
 @vite([
 'resources/css/inventario/inventario.css',
-'resources/js/residente/residente_search.js'
+'resources/js/residente/residente_search.js',
+'resources/js/residente/look.js',
+'resources/css/create/form_create.css',
+
 ])
 @endsection
 
@@ -16,12 +19,17 @@
 <div class="container-r">
     <div class="inventory-header">
         <h2>Detalles del residente</h2>
-        <a href="{{ route('residente.create') }}" class="btn btn-normal">Registrar signos</a>
+        <a href="{{ route('residente.signos_create', $residente->id) }}"
+            class="btn btn-normal">
+            Resumen reciente
+        </a>
     </div>
     <div class="first-data">
         <div class="img-residente">
             <img src="{{ asset('images/residente.png') }}" alt="Imagen Residente" width="150px">
-            <a href="{{ route('residente.create') }}" class="btn btn-normal">Resumen reciente</a>
+            <button id="openRolModalBtn" class="btn btn-primary">
+                Registrar signos vitales
+            </button>
         </div>
         <div class="principal-data">
             <h2>{{ $residente->nombre }} {{ $residente->apellido }}</h2>
@@ -82,3 +90,46 @@
 
 
 @endsection
+
+<!-- Modal rol -->
+<div id="rolModal" class="pantalla-fondo" style="display: none;">
+    <div class="box-center-flotante" id="rolModalContent">
+        
+        <div class="form-modal">
+            <h2>Registrar Signos Vitales</h2>
+            <form>
+                @csrf
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Presión sistólica   :</label>
+                    <input id="presion_sistolica" type="number" name="presion_sistolica" required>
+                </div>
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Presión diastólica:</label>
+                    <input id="presion_diastolica" type="number" name="presion_diastolica" required>
+                </div>
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Temperatura:</label>
+                    <input id="temperatura" type="number" name="temperatura " required>
+                </div>
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Frecuencia Respiratoria:</label>
+                    <input id="frecuencia_respiratoria" type="number" name="frecuencia_respiratoria" required>
+                </div>
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Frecuencia cardiaca:</label>
+                    <input id="frecuencia_cardiaca" type="number" name="frecuencia_cardiaca" required>
+                </div>
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Reporte general:</label>
+                    <textarea id="reporte_general" name="reporte_general" required></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
