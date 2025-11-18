@@ -339,6 +339,15 @@ td {
     gap: 10px;
 }
 /* ---- Residente ---- */
+.container-r{
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
 
 .first-data{
     display: flex;
@@ -350,6 +359,7 @@ td {
     border: 1px solid #ccc;
     width: 100%;
 }
+
 .first-data img{
     width: 200px;
     height: 200px;
@@ -377,7 +387,7 @@ td {
 }
 
 .principal-data p{
-    width: 50%;
+    width: 100%;
     background-color: rgb(255, 255, 255);
     padding-top: 10px;
     padding-bottom: 10px;
@@ -388,6 +398,20 @@ td {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.third-data{
+    display: flex;
+    flex-direction: wrap;
+    width: 100%;
+    column-gap: 20px;
+     row-gap: 10px;         /* espacio vertical */
+    align-items: flex-start;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;

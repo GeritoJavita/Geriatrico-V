@@ -25,10 +25,8 @@ return new class extends Migration
             // Columna compatible con residente.id manual
             $table->bigInteger('residente_id')->nullable();
             $table->foreign('residente_id')->references('id')->on('residente');
-
-            // Empleado sigue siendo autoincremental, puede usar foreignId
-            $table->foreignId('empleado_id')->nullable()->constrained('empleado');
-
+            $table->bigInteger('empleado_id')->nullable();
+            $table->foreign('empleado_id')->references('id')->on('empleado');
             $table->timestamps();
         });
     }
