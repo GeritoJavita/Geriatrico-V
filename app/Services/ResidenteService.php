@@ -67,4 +67,15 @@ class ResidenteService
 
         return $residentes;
     }
+
+    public function obtenerResidentePorId($id)
+    {
+        $residente = $this->residenteRepository->findById($id);
+        
+        if ($residente && $residente->fecha_nacimiento) {
+            $residente->edad = intval(Carbon::parse($residente->fecha_nacimiento)->diffInYears(Carbon::now()));
+        }
+        
+        return $residente;
+    }
 }

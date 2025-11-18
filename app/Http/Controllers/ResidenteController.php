@@ -39,6 +39,27 @@ class ResidenteController extends Controller
         return view('residente.create');
     }
 
+    public function show($id)
+    {
+        try {
+            $residente = $this->residenteService->obtenerResidentePorId($id);
+            
+            if (!$residente) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Residente no encontrado'
+                ], 404);
+            }
+
+            return view('residente.look', compact('residente'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al cargar residente: ' . $e->getMessage()
+            ]);
+        }
+    }
+
     public function store(Request $request)
     {
         try {

@@ -21,6 +21,8 @@ a {
     background: var(--primary-blue);
 }
 
+
+
 /* ---- Variables globales ---- */
 :root {
     --primary-teal: #32b4a8;
@@ -28,7 +30,7 @@ a {
     --primary-blue: #0097b2;
     --light-bg: #f8f9fa;
     --dark-text: #333333;
-     --primary-green-light: #32b4a8;
+    --primary-green-light: #32b4a8;
     --primary-beige: #ffffff;
     --primary-green-dark: #0097b2;
     --light-bg: #f8f9fa;
@@ -45,6 +47,7 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+
 }
 
 /* ---- Sidebar ---- */
@@ -163,8 +166,9 @@ table {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-thead th{
-    position:sticky;
+
+thead th {
+    position: sticky;
     top: 0;
     z-index: 2;
 }
@@ -230,7 +234,18 @@ td {
 }
 
 .btn {
+    
     padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.btn.btn-edit {
+    font-size: small;
+    padding: 0.3rem 0.8rem;
     border: none;
     border-radius: 8px;
     background: #007bff;
@@ -274,7 +289,7 @@ td {
 }
 
 .edit-content {
-   background-color: var(--primary-green-light);
+    background-color: var(--primary-green-light);
     color: white;
     font-weight: bold;
     display: flex;
@@ -285,7 +300,8 @@ td {
     justify-content: flex-start;
     padding: 20px;
     justify-content: space-between;
-    flex-wrap: wrap;          /* permite que los elementos pasen a otra fila */
+    flex-wrap: wrap;
+    /* permite que los elementos pasen a otra fila */
     gap: 40px;
 }
 
@@ -302,11 +318,12 @@ td {
     flex-direction: column;
     width: 100%;
     max-width: 200px;
-    gap: 6px; /* separa span, input y small */
+    gap: 6px;
+    /* separa span, input y small */
     text-align: left;
 }
 
-.item-input input{
+.item-input input {
     width: 100%;
     padding: 10px;
     border-radius: 10px;
@@ -314,14 +331,98 @@ td {
     outline: none;
 }
 
-.accion_edit{
+.accion_edit {
     margin-top: 20px;
     justify-content: center;
     display: flex;
     flex-wrap: nowrap;
     gap: 10px;
 }
+/* ---- Residente ---- */
 
+.first-data{
+    display: flex;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+.first-data img{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;   /* Centra verticalmente */
+    justify-content: center; /* (Opcional) centra horizontalmente */
+    background-color: #e7cbcb;
+    border-radius: 30px;
+}
+.first-data span{
+    font-weight: bold;
+    background-color: var(--primary-green-light);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+.principal-data{
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+}
+
+.principal-data p{
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius:  8px;
+}
+
+.secundary-data{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.third-data span{
+    font-weight: bold;
+}
+
+
+
+/* ---- Búsqueda ---- */
+.search-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.search-input {
+    padding: 8px 12px 8px 32px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 250px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 16px;
+    color: #888;
+}
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {

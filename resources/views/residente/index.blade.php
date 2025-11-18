@@ -14,14 +14,14 @@
 
 <div class="inventory-header">
     <h2>Pacientes Registrados</h2>
-    <form method="GET" action="{{ route('residente.index') }}" id="search-form">
-        <input type="text" 
-               name="search" 
-               id="search-input"
-               placeholder="Buscar por Nombre, Apellido, ID..." 
-               value="{{ request('search') }}"
-               autocomplete="off">
-    </form>
+    <div class="search-wrapper">
+        <i class="fa fa-search search-icon"></i>
+        <form method="GET" action="{{ route('residente.index') }}" id="search-form">
+            <input type="text" name="search" id="search-input" placeholder="Buscar por Nombre, Apellido, ID..."
+                value="{{ request('search') }}"
+                autocomplete="off" class="search-input">
+        </form>
+    </div>
     <a href="{{ route('residente.create') }}" class="btn">Agregar Residente</a>
 </div>
 
@@ -50,7 +50,8 @@
                 <td class="cama">{{ $residente->cama ?? 'N/A' }}</td>
                 <td class="fecha_ingreso">{{ $residente->fecha_ingreso }}</td>
                 <td>
-                    <button type="button" class="btn btn-edit">Ver</button>
+                    <a href="{{ route('residente.show', $residente->id) }}" class="btn btn-edit">Ver</a>
+
                 </td>
             </tr>
             @empty
