@@ -14,7 +14,7 @@
 
 
 <div class="inventory-header">
-    <h2>Empleados registrados</h2>
+    <h2>Empleados registrados </h2>
     <div class="search-wrapper">
         <i class="fa fa-search search-icon"></i>
         <form method="GET" action="{{ route('residente.index') }}" id="search-form">

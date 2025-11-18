@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <small class="small-red">*</small>
-            <label>salario:</label>
+            <label>salario :</label>
             <input id="salario" type="number" name="salario" required>
         </div>
         <div class="form-group">
