@@ -48,27 +48,17 @@
 
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-bed"></i>
+            <i class="fas fa-box"></i>
         </div>
-        <h3>Habitaciones Ocupadas</h3>
-        <p class="card-number">{{ $habitacionesOcupadas ?? '--' }}</p>
+        <h3>Proveedores</h3>
+        <p class="card-number">{{ $totalProveedores ?? '--' }}</p>
         <div class="card-footer">
-            <span class="status-indicator occupied"></span>
-            Ocupación actual
+            <span class="status-indicator active"></span>
+            Disponibles
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-icon">
-            <i class="fas fa-heartbeat"></i>
-        </div>
-        <h3>Controles Hoy</h3>
-        <p class="card-number">{{ $controlesHoy ?? '--' }}</p>
-        <div class="card-footer">
-            <span class="status-indicator planned"></span>
-            Realizados
-        </div>
-    </div>
+   
 
 </div>
 
