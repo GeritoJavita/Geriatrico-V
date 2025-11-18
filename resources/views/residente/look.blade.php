@@ -16,10 +16,12 @@
 <div class="container-r">
     <div class="inventory-header">
         <h2>Detalles del residente</h2>
+        <a href="{{ route('residente.create') }}" class="btn btn-normal">Registrar signos</a>
     </div>
     <div class="first-data">
         <div class="img-residente">
             <img src="{{ asset('images/residente.png') }}" alt="Imagen Residente" width="150px">
+            <a href="{{ route('residente.create') }}" class="btn btn-normal">Resumen reciente</a>
         </div>
         <div class="principal-data">
             <h2>{{ $residente->nombre }} {{ $residente->apellido }}</h2>
@@ -55,16 +57,28 @@
         </div>
     </div>
 
-
+    <h3>Información adicional</h3>
     <div class="third-data">
-        <h3>Información adicional</h3>
         <p><span>EPS:</span> {{ $residente->eps }}</p>
         <p><span>Altura:</span> {{ $residente->altura }} cm</p>
         <p><span>Peso:</span> {{ $residente->peso ?? 'N/A'}} kg</p>
         <p><span>Fecha de Nacimiento:</span> {{ $residente->fecha_nacimiento }}</p>
-        <p><span>Dirección:</span> {{ $residente->direccion }}</p>
         <p><span>Teléfono:</span> {{ $residente->telefono }}</p>
+        <p><span>Dirección:</span> {{ $residente->direccion }}</p>
     </div>
 </div>
+<h3>Diagnósticos</h3>
+<div class="general-data">
+    <p><span></span> {{ $residente->ep."diagnositco de la tabla" }}</p>
+</div>
+<h3>Historial clínico</h3>
+<div class="general-data">
+    <p><span></span> {{ $residente->ep."diagnositco de Historial clínico" }}</p>
+</div>
+<h3>Signos vitales</h3>
+<div class="general-data">
+    <p><span></span> {{ $residente->ep."diagnositco Signos vitales" }}</p>
+</div>
+
 
 @endsection

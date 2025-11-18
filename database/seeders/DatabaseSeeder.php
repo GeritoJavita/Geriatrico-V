@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Alergia;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +17,8 @@ class DatabaseSeeder extends Seeder
             DetalleProductoSeeder::class,
             RoleSeeder::class,
             UsuarioSeeder::class,
+            AlergiaSeeder::class,
+            PatologiaSeeder::class,
         ]);
     }
 }

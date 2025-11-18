@@ -78,10 +78,19 @@ class ResidenteController extends Controller
                 'condicion_medica' => 'nullable|string',
                 'direccion' => 'nullable|string|max:255',
                 'altura' => 'nullable|numeric',
+                'peso' => 'nullable|numeric',
                 'eps' => 'nullable|string|max:100',
             ]);
 
-            $residente = $this->residenteService->crearResidente($request->all());
+            // Obtener datos del residente
+            $dataResidente = $request->all();
+            
+            // Obtener alergias y patologías si existen
+            $alergias = $request->has('alergias') ? json_decode($request->alergias, true) : [];
+            $patologias = $request->has('patologias') ? json_decode($request->patologias, true) : [];
+
+            // Crear residente con alergias y patologías
+            $residente = $this->residenteService->crearResidenteConRelaciones($dataResidente, $alergias, $patologias);
 
             return response()->json([
                 'success' => true,
@@ -89,11 +98,10 @@ class ResidenteController extends Controller
                 'residente' => $residente
             ]);
         } catch (ValidationException $e) {
-            // Devuelve todos los errores de validación en un array
             return response()->json([
                 'success' => false,
                 'message' => 'Errores de validación',
-                'errors' => $e->errors() // <-- aquí están todos los errores por campo
+                'errors' => $e->errors()
             ]);
         } catch (\Exception $e) {
             return response()->json([

@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Residente extends Model
 {
     protected $table = 'residente';
+    
+    // Desactivar auto-incremento porque usamos ID manual (cédula)
+    public $incrementing = false;
+    
+    // El ID es de tipo string o int según tu base de datos
+    protected $keyType = 'int';
 
     protected $fillable = [
         'id',
@@ -23,6 +29,7 @@ class Residente extends Model
         'condicion_medica',
         'direccion',
         'altura',
+        'peso',
         'eps',
     ];
 
