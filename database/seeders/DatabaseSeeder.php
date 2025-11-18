@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UsuarioSeeder::class,
             AlergiaSeeder::class,
             PatologiaSeeder::class,
+            ResidenteSeeder::class,
         ]);
     }
 }
