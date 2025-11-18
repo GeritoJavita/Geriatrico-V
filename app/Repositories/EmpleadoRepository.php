@@ -52,4 +52,9 @@ class EmpleadoRepository
             })
             ->get();
     }
+    public function count()
+{
+    return Empleado::count();
+}
+
 }
