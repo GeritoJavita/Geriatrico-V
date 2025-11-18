@@ -45,6 +45,11 @@ class EmpleadoController extends Controller
         }
     }
 
+
+      public function create()
+    {
+        return view('empleado.create');
+    }
     public function update(Request $request, $id)
     {
         try {

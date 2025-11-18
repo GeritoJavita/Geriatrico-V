@@ -21,6 +21,9 @@ export default defineConfig({
                 'resources/js/producto/producto_regist.js',
                 'resources/js/residente/residente_register.js',
                 'resources/js/residente/residente_search.js',
+                'resources/js/empleado/empleado_registro.js',
+                'resources/js/empleado/empleado_search.js',
+           
                 
             ],
             refresh: true,
