@@ -134,4 +134,8 @@ class ResidenteService
         // Recargar el residente con sus relaciones
         return $residente->fresh(['alergias', 'patologias']);
     }
+    public function count()
+    {
+        return $this->residenteRepository->count();
+    }
 }

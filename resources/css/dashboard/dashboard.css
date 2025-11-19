@@ -181,3 +181,468 @@
                 gap: 10px;
             }
         }
+        /* ---- Banner ---- */
+.banner-dashboard {
+    width: 100%;
+    height: 220px;
+    border-radius: 15px;
+    background: url('https://www.udistrital.edu.co/themes/custom/versh/logo.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.banner-text h2 {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 0px 3px 8px rgba(0,0,0,0.4);
+}
+
+.banner-text p {
+    color: #e9ecef;
+    font-size: 1.1rem;
+    margin-top: 5px;
+    font-style: italic;
+    text-shadow: 0px 2px 6px rgba(0,0,0,0.4);
+}
+
+/* ---- Tarjetas ---- */
+.cards {
+    margin-top: 1rem;
+}
+
+.card {
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+/* ---- Parte Inferior ---- */
+.dashboard-lower {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.panel {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.panel h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-black);
+}
+
+.placeholder-chart {
+    width: 100%;
+    height: 200px;
+    background: #e7f3f6;
+    border-radius: 12px;
+    border: 2px dashed #0097b2;
+}
+
+/* Lista de notas */
+.daily-notes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.daily-notes li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+/* Banner Mejorado */
+.banner-dashboard {
+    width: 100%;
+    height: 220px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--primary-black) 0%, var(--primary-orange) 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: cover;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+}
+
+.banner-text h2 {
+    color: white;
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    text-shadow: 0px 3px 8px rgba(0,0,0,0.4);
+}
+
+.banner-text p {
+    color: #e9ecef;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-style: italic;
+    text-shadow: 0px 2px 6px rgba(0,0,0,0.4);
+}
+
+.banner-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    margin-top: 5px;
+}
+
+.banner-icon {
+    font-size: 5rem;
+    color: rgba(255,255,255,0.2);
+}
+
+/* Tarjetas Mejoradas */
+.card {
+    transition: 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.card-icon {
+    margin-bottom: 15px;
+}
+
+.card-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-orange);
+}
+
+.card h3 {
+    color: var(--primary-black);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.card-number {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--primary-black);
+    margin: 10px 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-indicator.active {
+    background-color: #28a745;
+}
+
+.status-indicator.occupied {
+    background-color: #ffc107;
+}
+
+.status-indicator.planned {
+    background-color: #17a2b8;
+}
+
+/* Panel Header Mejorado */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.panel-badge {
+    background: var(--primary-orange);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.date-badge {
+    background: var(--primary-black);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Placeholder Chart Mejorado */
+.placeholder-chart {
+    width: 100%;
+    height: 200px;
+    background: #e7f3f6;
+    border-radius: 12px;
+    border: 2px dashed #0097b2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.chart-placeholder-text {
+    text-align: center;
+    color: #0097b2;
+}
+
+.chart-placeholder-text i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.chart-placeholder-text p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Panel Actions */
+.panel-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-panel {
+    background: var(--primary-orange);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-panel:hover {
+    background: var(--primary-black);
+}
+
+.btn-panel.outline {
+    background: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+}
+
+.btn-panel.outline:hover {
+    background: var(--primary-orange);
+    color: white;
+}
+
+/* Activities Timeline */
+.activities-timeline {
+    margin: 20px 0;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-time {
+    min-width: 80px;
+    font-weight: bold;
+    color: var(--primary-black);
+    font-size: 0.9rem;
+}
+
+.activity-content {
+    flex-grow: 1;
+    padding: 0 15px;
+}
+
+.activity-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+
+.activity-content p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.activity-status {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.activity-status.completed {
+    background: #28a745;
+}
+
+.activity-status.pending {
+    background: #ffc107;
+}
+
+.activity-status.upcoming {
+    background: #17a2b8;
+}
+
+/* Panel Footer */
+.panel-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.view-all-link {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.view-all-link:hover {
+    text-decoration: underline;
+}
+
+/* Reminders Panel */
+.reminders-panel {
+    margin-top: 2rem;
+}
+
+.reminders-list {
+    margin-top: 15px;
+}
+
+.reminder-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.reminder-item:last-child {
+    border-bottom: none;
+}
+
+.reminder-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e7f3f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--primary-orange);
+}
+
+.reminder-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+
+.reminder-content p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .banner-stats {
+        justify-content: center;
+    }
+    
+    .banner-icon {
+        display: none;
+    }
+    
+    .dashboard-lower {
+        grid-template-columns: 1fr;
+    }
+    
+    .panel-actions {
+        flex-direction: column;
+    }
+}
