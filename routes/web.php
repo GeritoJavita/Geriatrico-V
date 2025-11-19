@@ -61,9 +61,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('historia_clinica', HistoriaClinicaController::class)->middleware('can:dashboard_admin');
     Route::resource('residente', ResidenteController::class)->middleware('can:dashboard_admin');
     //Ruta personalizada adicional
-    Route::get('residente/{id}/signos_create', 
-    [ResidenteController::class, 'signos_create']
-)->name('residente.signos_create')->middleware('can:dashboard_admin');
+    Route::get(
+        'residente/{id}/signos_create',
+        [ResidenteController::class, 'signos_create']
+    )->name('residente.signos_create')->middleware('can:dashboard_admin');
 
 
     Route::resource('empleado', EmpleadoController::class)->middleware('can:dashboard_admin');

@@ -13,10 +13,7 @@ return new class extends Migration
     {
         Schema::create('familiar', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->string('nombre', 80);
-            $table->string('apellido', 80);
-            $table->string('correo', 80);
-            $table->string('telefono', 20);
+            $table->foreignId('usuario_id')->nullable()->constrained('usuario');
             $table->timestamps();
         });
     }

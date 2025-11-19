@@ -21,9 +21,10 @@
 
             <div class="modal-body">
                 <!-- Aquí va tu formulario -->
-                <form id="formSignos">
+                <form id="form-modal">
                     @csrf
-                    <input type="hidden" id="id_residente">
+                    <input type="hidden" id="id_residente" name="residente_id" value="">
+
 
                     <label>Temperatura</label>
                     <input type="text" class="form-control" name="temperatura">

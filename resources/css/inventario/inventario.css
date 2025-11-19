@@ -277,6 +277,14 @@ td {
     border-radius: 6px;
     font-size: 0.85rem;
 }
+.btn-cancel{
+     padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #ff0000;
+    color: white;
+    cursor: pointer;
+}
 
 
 .edit {
@@ -478,53 +486,6 @@ td {
     font-size: 16px;
     color: #888;
 }
-
-/* ========================
-    Modals
-======================== */
-
-.pantalla-fondo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(36, 35, 35, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 999;
-
-    /* ESTO es lo que centra tu modal */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-modal {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 500px;
-    background: white;
-}
-
-.form-group {
-    margin-top: 20px;
-    margin-bottom: 15px;
-    width: 100%;
-    position: relative;
-    /* NECESARIO para absolute */
-}
-
-label {
-    font-weight: bold;
-    margin-bottom: 0.4rem;
-    display: block;
-    color: var(--dark-text);
-}
-
 
 
 

@@ -118,7 +118,6 @@
             <label>Eps:</label>
             <select id="eps" name="eps" class="form-control" required>
                 <option value="">Selecciona una EPS</option>
-
                 <option>Aliansalud EPS</option>
                 <option>Anas Wayuu EPSI</option>
                 <option>Asmet Salud</option>

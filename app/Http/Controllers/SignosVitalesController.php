@@ -34,6 +34,7 @@ class SignosVitalesController extends Controller
                 'reporte_signos' => 'nullable|string',
                 'residente_id' => 'required|integer|exists:residente,id',
                 'empleado_id' => 'required|integer|exists:empleado,id',
+                
             ]);
 
             $signosVitales = $this->signosVitalesService->crearSignosVitales($request->all());
