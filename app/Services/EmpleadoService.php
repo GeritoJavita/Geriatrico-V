@@ -39,4 +39,9 @@ class EmpleadoService
             ? $this->empleadoRepository->search($search)
             : $this->empleadoRepository->getAll();
     }
+    public function count()
+{
+    return $this->empleadoRepository->count();
+}
+
 }
