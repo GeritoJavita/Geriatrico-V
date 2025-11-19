@@ -33,4 +33,10 @@ class ProveedorRepository
         $proveedor = $this->obtenerPorId($id);
         return $proveedor->delete();
     }
+
+    public function count()
+    {
+        return Proveedor::count();
+    }
+
 }

@@ -53,4 +53,8 @@ class ResidenteRepository
             })
             ->get();
     }
+    public function count()
+{
+    return Residente::count();
+}
 }
