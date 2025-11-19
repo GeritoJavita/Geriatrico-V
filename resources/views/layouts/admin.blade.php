@@ -11,16 +11,7 @@
         <div class="banner-text">
             <h2>Bienvenido al Hogar Geriátrico</h2>
             <p>"Cuidar de quienes cuidaron de nosotros es un honor."</p>
-            <div class="banner-stats">
-                <div class="stat-item">
-                    <span class="stat-value">{{ $totalEmpleados ?? '--' }}</span>
-                    <span class="stat-label">Empleados Activos</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">{{ $totalPacientes ?? '--' }}</span>
-                    <span class="stat-label">Residentes Activos</span>
-                </div>
-            </div>
+           
         </div>
         <div class="banner-icon">
             <i class="fas fa-heart"></i>
