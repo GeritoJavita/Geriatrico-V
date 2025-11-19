@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigInteger('id')->primary();
             $table->string('nombre', 45);
             $table->string('apellido', 45);
+            $table->string('foto')->nullable();
             $table->date('fecha_nacimiento');
             $table->string('telefono', 45);
             $table->date('fecha_ingreso');
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->string('eps', 45);
             $table->string('ruta', 255)->nullable();
             $table->timestamps();
+           
         });
     }
 

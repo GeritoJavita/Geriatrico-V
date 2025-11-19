@@ -26,7 +26,7 @@
     </div>
     <div class="first-data">
         <div class="img-residente">
-            <img src="{{ asset('images/residente.png') }}" alt="Imagen Residente" width="150px">
+            <img src="{{ $residente->foto ? asset('storage/' . $residente->foto) : asset('images/default-avatar.png')}}" alt="Imagen Residente" width="150px">
             <button id="openRolModalBtn" class="btn btn-primary">
                 Registrar signos vitales
             </button>
