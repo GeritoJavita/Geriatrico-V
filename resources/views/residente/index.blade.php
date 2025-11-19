@@ -51,7 +51,6 @@
                 <td class="fecha_ingreso">{{ $residente->fecha_ingreso }}</td>
                 <td>
                     <a href="{{ route('residente.show', $residente->id) }}" class="btn btn-edit">Ver</a>
-
                 </td>
             </tr>
             @empty

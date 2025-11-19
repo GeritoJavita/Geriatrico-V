@@ -24,8 +24,8 @@ export default defineConfig({
                 'resources/js/empleado/empleado_registro.js',
                 'resources/js/empleado/empleado_search.js',
                 'resources/js/residente/look.js',
+                'resources/js/usuario/usuario_index.js',
            
-                
             ],
             refresh: true,
         }),
