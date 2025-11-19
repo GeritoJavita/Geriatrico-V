@@ -5,7 +5,8 @@
 @section('styles')
 @vite([
 'resources/css/inventario/inventario.css',
-'resources/js/residente/residente_search.js'
+'resources/js/residente/residente_search.js',
+'resources/js/usuario/usuario_index.js'
 ])
 @endsection
 @section('header', 'Usuarios')
@@ -31,7 +32,7 @@
     <table>
         <thead>
             <tr>
-                 <th>ID</th>
+                <th>ID</th>
                 <th>nombre</th>
                 <th>Apellido</th>
                 <th>correo</th>
@@ -49,7 +50,8 @@
                 <td>{{ $usuario->correo }}</td>
                 <td>{{ $usuario->direccion }}</td>
                 <td>
-                    <a href="{{ route('usuario.show', $usuario->id) }}" class="btn btn-view">Ver</a>
+                    <a href="{{ route('usuario.show', $usuario->id) }}" class="btn btn-edit">Contratar</a>
+                    <button id="openRolModalBtn" class="btn btn-edit">Contratar</button>
                     <a href="{{ route('usuario.edit', $usuario->id) }}" class="btn btn-edit">Editar</a>
                 </td>
             </tr>
@@ -60,3 +62,25 @@
 
 
 @endsection
+
+<div id="rolModal" class="pantalla-fondo" style="display: none;">
+    <div class="box-center-flotante" id="rolModalContent">
+
+        <div class="form-modal">
+            <h2>Contratar a Auxiliar</h2>
+            <form>
+                @csrf
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Fecha de ingreso:</label>
+                    <input id="presion_sistolica" type="number" name="presion_sistolica" required>
+                </div>
+                <div class="form-group">
+                    <small class="small-red">*</small>
+                    <label>Salario:</label>
+                    <input id="presion_diastolica" type="number" name="presion_diastolica" required>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

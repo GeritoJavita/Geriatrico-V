@@ -91,7 +91,6 @@
 
 @endsection
 
-<!-- Modal rol -->
 <div id="rolModal" class="pantalla-fondo" style="display: none;">
     <div class="box-center-flotante" id="rolModalContent">
         
