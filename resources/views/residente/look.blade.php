@@ -1,6 +1,6 @@
 @extends('layouts.dashboard_admin')
 
-@section('title', 'Detalle Residente')
+@section('title', 'Detalle Residentes')
 
 @section('styles')
 @vite([
@@ -28,7 +28,7 @@
 
         {{-- Foto + botón --}}
         <div class="img-residente">
-            <img src="{{ asset('images/residente.png') }}" alt="Imagen Residente" width="150px">
+            <img src="{{ $residente->foto ? asset('storage/' . $residente->foto) : asset('images/default-avatar.png')}}" alt="Imagen Residente" width="150px">
             <button id="openRolModalBtn" class="btn btn-primary">
                 Registrar signos vitales
             </button>
@@ -103,11 +103,8 @@
 @endsection
 
 
-{{-- ========================= --}}
-{{-- Modal REGISTRAR SIGNOS --}}
-{{-- ========================= --}}
-
 <div id="Modal" class="pantalla-fondo" style="display: none;">
+
     <div class="box-center-flotante" id="rolModalContent">
 
         <div class="form-modal" id="form-modal">

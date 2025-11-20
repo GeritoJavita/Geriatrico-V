@@ -9,6 +9,7 @@ class Familiar extends Model
     protected $table = 'familiar';
 
     protected $fillable = [
+        'id',
         'nombre',
         'apellido',
         'correo',

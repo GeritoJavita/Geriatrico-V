@@ -18,6 +18,7 @@ class Residente extends Model
         'id',
         'nombre',
         'apellido',
+        'foto',
         'fecha_nacimiento',
         'telefono',
         'fecha_ingreso',
@@ -81,5 +82,12 @@ class Residente extends Model
     public function medicamentos()
     {
         return $this->hasMany(MedicamentoResidente::class, 'residente_id');
+    }
+     public function getFotoUrlAttribute()
+    {
+        if ($this->foto) {
+            return asset('storage/' . $this->foto);
+        }
+        return asset('images/default-avatar.png');
     }
 }

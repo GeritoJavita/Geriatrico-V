@@ -36,9 +36,10 @@
                 <th>Salario</th>
                 <th>Fecha de salida</th>
                 <th>Usuario ID</th>
+                <th>Acciones</th>
             </tr>
         </thead>
-   </thead>
+        </thead>
         <tbody id="empleado-tbody">
             @forelse ($empleados as $empleado)
             <tr data-id="{{ $empleado->id }}">
@@ -47,6 +48,11 @@
                 <td class="salario">{{ $empleado->salario ?? 'N/A' }}</td>
                 <td class="fecha_salida">{{ $empleado->fecha_salida ?? 'N/A' }}</td>
                 <td class="usuario_id">{{ $empleado->usuario_id ?? $empleado->user_id ?? 'N/A' }}</td>
+                <td>
+                    <a href class="btn btn-edit">Ver</a>
+                    <a href class="btn btn-edit">asociar</a>
+                    <a href class="btn btn-edit">contratar</a>
+                </td>
             </tr>
             @empty
             <tr>
@@ -60,4 +66,3 @@
 
 
 @endsection
-

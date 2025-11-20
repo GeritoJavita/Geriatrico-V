@@ -1,123 +1,96 @@
 import 'notyf/notyf.min.css';
 import Swal from 'sweetalert2';
 import { Notyf } from 'notyf';
-import { validarCorreo } from '../app.js';
-import { formatearPesos } from '../app.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const notyf = new Notyf({
         duration: 3500,
-        position: { x: 'top', y: 'top' }
+        position: { x: 'center', y: 'top' }
     });
 
+    // BOTONES Y FORMULARIO
     const editButtons = document.querySelectorAll(".btn-edit");
-    const formEdit = document.getElementById("form-validation-edit");
-    const idEdit = document.getElementById("id-edit");
-    const nombreEdit = document.getElementById("nombre-edit");
-    const direccionEdit = document.getElementById("direccion-edit");
-    const telefonoEdit = document.getElementById("telefono-edit");
-    const correoEdit = document.getElementById("correo-edit");
-    const correoError = document.querySelector('.correo-error');
-    const btnActualizar = document.getElementById("btn-actualizar");
+    const formEdit = document.getElementById("form-residente-edit");
 
-    // Cuando se hace clic en editar → cargar datos en el formulario
+    const btnActualizar = document.getElementById("btn-actualizar");
+    const btnVaciar = document.getElementById("btn-vaciar");
+
+    const idEdit = document.getElementById("id-edit");
+    const identificacionEdit = document.getElementById("identificacion-edit");
+    const nombreEdit = document.getElementById("nombre-edit");
+    const apellidoEdit = document.getElementById("apellido-edit");
+    const fechaNacimientoEdit = document.getElementById("fecha_nacimiento-edit");
+    const tipoSangreEdit = document.getElementById("tipo_sangre-edit");
+    const generoEdit = document.getElementById("genero-edit");
+    const telefonoEdit = document.getElementById("telefono-edit");
+    const epsEdit = document.getElementById("eps-edit");
+    const fechaIngresoEdit = document.getElementById("fecha_ingreso-edit");
+    // agrega los demás campos como habitación, cama, dirección, peso, altura...
+
+    // RELLENAR FORMULARIO AL DAR CLICK EN "Editar"
     editButtons.forEach(btn => {
         btn.addEventListener("click", e => {
             const fila = e.target.closest("tr");
-            //document.getElementById("id-edit").value = fila.dataset.id;
-            idEdit.value = fila.querySelector(".id").textContent.trim();
-            nombreEdit.value = fila.querySelector(".nombre").textContent.trim();
-            direccionEdit.value = fila.querySelector(".direccion").textContent.trim();
-            telefonoEdit.value = fila.querySelector(".telefono").textContent.trim();
-            correoEdit.value = fila.querySelector(".correo").textContent.trim();
 
+            idEdit.value = fila.dataset.id;
+            identificacionEdit.value = fila.querySelector(".id").textContent.trim();
+            nombreEdit.value = fila.querySelector(".nombre").textContent.trim().split(' ')[0];
+            apellidoEdit.value = fila.querySelector(".nombre").textContent.trim().split(' ')[1] || '';
+            generoEdit.value = fila.querySelector(".genero").textContent.trim();
+            // si tienes edad, fecha de nacimiento, etc. puedes mapearlos aquí
             formEdit.scrollIntoView({ behavior: "smooth" });
         });
     });
 
-    // Actualizar proveedor
-    btnActualizar.addEventListener("click", async (e) => {
+    // BOTÓN ACTUALIZAR
+    btnActualizar.addEventListener("click", (e) => {
         e.preventDefault();
-        correoError.style.display = 'none';
-        correoError.textContent = '';
 
-        const id = document.getElementById("id-edit").value;
-        // notyf.success("el id es"+idEdit.value);
-        const correoTrim = correoEdit.value.trim();
-
-        // Validar correo
-        if (!validarCorreo(correoTrim)) {
-            correoError.style.display = 'inline';
-            correoError.textContent = 'Correo no válido: usa Gmail, Hotmail u Outlook.';
-            notyf.error('Correo no válido');
+        if (!formEdit.checkValidity()) {
+            formEdit.classList.add('was-validated');
+            notyf.error('Campos inválidos o no llenados');
             return;
         }
 
         Swal.fire({
-            title: "¿Quieres    actualizar este proveedor?",
+            title: '¿Deseas actualizar los datos del residente?',
             showDenyButton: true,
             showCancelButton: true,
-            confirmButtonText: "Actualizar",
-            denyButtonText: `No actualizar`
+            confirmButtonText: 'Actualizar',
+            denyButtonText: 'No actualizar'
         }).then(async (result) => {
             if (result.isConfirmed) {
+                const datos = new FormData(formEdit);
 
-                const formData = new FormData(formEdit);
-                formData.append('_method', 'PUT'); // importante para Laravel
-
-                try {
-                    const response = await fetch(`/proveedores/${id}`, {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                        },
-                        body: formData
-                    });
-
-                    if (response.ok) {
-                        notyf.success('Datos actualizados con éxito');
-                        setTimeout(() => location.reload(), 1500);
-                    } else {
-                        notyf.error('Error al actualizar proveedor');
-                        console.error(await response.text());
+                fetch(`/residente/${idEdit.value}`, {
+                    method: 'POST',
+                    body: datos,
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     }
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    notyf.error('Error inesperado al actualizar');
-                }
-
-            } else if (result.isDenied) {
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        notyf.success("Residente actualizado correctamente");
+                        formEdit.reset();
+                        setTimeout(() => window.location.reload(), 1000);
+                    } else {
+                        notyf.error(data.message || 'Error al actualizar');
+                        console.error(data);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    notyf.error('Error al conectar con el servidor');
+                });
+            } else if(result.isDenied){
                 Swal.fire("Cambios no guardados", "", "info");
             }
         });
     });
 
-    const deleteForms = document.querySelectorAll('.delete-proveedor-form');
-
-
-    deleteForms.forEach(form => {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault(); // evitamos envío directo
-
-            Swal.fire({
-                title: '¿Seguro que quieres eliminar este proveedor?',
-                text: "Esta acción no se puede deshacer",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit(); // se envía a Laravel
-                }
-            });
-        });
-    });
-
-    // Mostrar notificación si Laravel puso session('success')
-    const successMessage = document.querySelector('meta[name="success-message"]');
-    if (successMessage) {
-        notyf.success(successMessage.content);
-    }
+    // BOTÓN VACIAR
+    btnVaciar.addEventListener("click", () => formEdit.reset());
 });

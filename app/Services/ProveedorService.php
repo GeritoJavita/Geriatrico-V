@@ -49,4 +49,8 @@ class ProveedorService
     return $this->proveedorRepository->eliminar($id);
 }
 
+ public function count()
+ {
+    return $this->proveedorRepository->count();
+ }
 }

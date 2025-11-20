@@ -20,6 +20,11 @@ class FamiliarController extends Controller
         return view('familiar.index', compact('familiares'));
     }
 
+         public function create()
+    {
+        return view('familiar.create');
+    }
+
     public function store(Request $request)
     {
         try {
