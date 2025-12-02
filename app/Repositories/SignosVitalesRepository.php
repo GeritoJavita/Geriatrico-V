@@ -6,19 +6,26 @@ use App\Models\SignosVitales;
 
 class SignosVitalesRepository
 {
+    protected $model;
+
+    public function __construct(SignosVitales $model)
+    {
+        $this->model = $model;
+    }
+
     public function getAll()
     {
-        return SignosVitales::with(['residente', 'empleado'])->get();
+        return $this->model->with(['residente', 'empleado'])->get();
     }
 
     public function findById($id)
     {
-        return SignosVitales::find($id);
+        return $this->model->find($id);
     }
 
     public function create(array $data)
     {
-        return SignosVitales::create($data);
+        return $this->model->create($data);
     }
 
     public function update($id, array $data)
@@ -43,15 +50,25 @@ class SignosVitalesRepository
 
     public function search($search)
     {
-        return SignosVitales::with(['residente', 'empleado'])
+        return $this->model->with(['residente', 'empleado'])
             ->where(function ($q) use ($search) {
                 $q->where('id', $search)
-                  ->orWhere('fecha', 'like', "%$search%")
-                  ->orWhere('hora', 'like', "%$search%")
-                  ->orWhere('residente_id', $search)
-                  ->orWhere('empleado_id', $search);
+                    ->orWhere('fecha', 'like', "%$search%")
+                    ->orWhere('hora', 'like', "%$search%")
+                    ->orWhere('residente_id', $search)
+                    ->orWhere('empleado_id', $search);
             })
             ->get();
     }
-    
+
+    public function getQuery()
+    {
+        return $this->model->newQuery();
+    }
+
+    // Un método para obtener todos los signos vitales por residente:
+    public function listarPorResidente($residenteId)
+    {
+        return $this->model->where('residente_id', $residenteId);
+    }
 }

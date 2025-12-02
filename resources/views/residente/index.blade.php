@@ -46,7 +46,7 @@
             @forelse ($residentes as $residente)
             <tr 
                 data-id="{{ $residente->id }}"
-                data-cedula="{{ $residente->cedula }}"
+                data-cedula="{{ $residente->id }}"
                 data-fecha-nacimiento="{{ $residente->fecha_nacimiento }}"
                 data-tipo-sangre="{{ $residente->tipo_sangre }}"
                 data-telefono="{{ $residente->telefono }}"
@@ -64,7 +64,7 @@
      alt="Foto de {{ $residente->nombre }}"
      style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-teal);">
                 </td>
-                <td class="cedula">{{ $residente->cedula }}</td>
+                <td class="cedula">{{ $residente->id }}</td>
                 <td class="nombre">{{ $residente->nombre }} {{ $residente->apellido }}</td>
                 <td class="edad">{{ $residente->edad }}</td>
                 <td class="genero">{{ $residente->genero }}</td>

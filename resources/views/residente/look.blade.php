@@ -16,88 +16,84 @@
 @section('content')
 
 <div class="container-r">
-
-    <div class="inventory-header">
-        <h2>Detalles del residente</h2>
-        <a href="{{ route('residente.signos_create', $residente->id) }}" class="btn btn-normal">
-            Resumen reciente
-        </a>
-    </div>
-
-    <div class="first-data">
-
-        {{-- Foto + botón --}}
-        <div class="img-residente">
-            <img src="{{ $residente->foto ? asset('storage/' . $residente->foto) : asset('images/default-avatar.png')}}" alt="Imagen Residente" width="150px">
-            <button id="openRolModalBtn" class="btn btn-primary">
-                Registrar signos vitales
-            </button>
+    <div id="residente-show" data-residente-id="{{ $residente->id }}">
+        <div class="inventory-header">
+            <h2>Detalles del residente</h2>
         </div>
 
-        {{-- Datos principales --}}
-        <div class="principal-data">
-            <h2>{{ $residente->nombre }} {{ $residente->apellido }}</h2>
-            <p><span>Documento:</span> {{ $residente->id }}</p>
-            <p><span>Tipo de sangre:</span> {{ $residente->tipo_sangre }}</p>
-            <p><span>Habitación:</span> {{ $residente->habitacion ?? 'N/A' }}</p>
-            <p><span>Género:</span> {{ $residente->genero }}</p>
-            <p><span>Edad:</span> {{ $residente->edad }}</p>
-            <p><span>Cama:</span> {{ $residente->cama ?? 'N/A' }}</p>
-            <p><span>Contacto de Emergencia:</span> {{ $residente->telefono_emerg }}</p>
-        </div>
+        <div class="first-data">
 
-        {{-- Alergias y Patologías --}}
-        <div class="secundary-data">
-            <div class="alergias">
-                <h3>Alergias</h3>
-                <ul>
-                    @forelse($residente->alergias as $alergia)
-                    <li>{{ $alergia->nombre }}</li>
-                    @empty
-                    <li>No registra alergias</li>
-                    @endforelse
-                </ul>
+            {{-- Foto + botón --}}
+            <div class="img-residente">
+                <img src="{{ $residente->foto ? asset('storage/' . $residente->foto) : asset('images/default-avatar.png')}}" alt="Imagen Residente" width="150px">
+                <button id="openRolModalBtn" class="btn btn-primary">
+                    Registrar signos vitales
+                </button>
+            </div>
+            {{-- Datos principales --}}
+            <div class="principal-data">
+                <h2>{{ $residente->nombre }} {{ $residente->apellido }}</h2>
+                <p><span>Documento:</span> {{ $residente->id }}</p>
+                <p><span>Tipo de sangre:</span> {{ $residente->tipo_sangre }}</p>
+                <p><span>Habitación:</span> {{ $residente->habitacion ?? 'N/A' }}</p>
+                <p><span>Género:</span> {{ $residente->genero }}</p>
+                <p><span>Edad:</span> {{ $residente->edad }}</p>
+                <p><span>Cama:</span> {{ $residente->cama ?? 'N/A' }}</p>
+                <p><span>Contacto de Emergencia:</span> {{ $residente->telefono_emerg }}</p>
             </div>
 
-            <div class="patologias">
-                <h3>Patologías</h3>
-                <ul>
-                    @forelse($residente->patologias as $patologia)
-                    <li>{{ $patologia->nombre }}</li>
-                    @empty
-                    <li>No registra patologías</li>
-                    @endforelse
-                </ul>
+            {{-- Alergias y Patologías --}}
+            <div class="secundary-data">
+                <div class="alergias">
+                    <h3>Alergias</h3>
+                    <ul>
+                        @forelse($residente->alergias as $alergia)
+                        <li>{{ $alergia->nombre }}</li>
+                        @empty
+                        <li>No registra alergias</li>
+                        @endforelse
+                    </ul>
+                </div>
+
+                <div class="patologias">
+                    <h3>Patologías</h3>
+                    <ul>
+                        @forelse($residente->patologias as $patologia)
+                        <li>{{ $patologia->nombre }}</li>
+                        @empty
+                        <li>No registra patologías</li>
+                        @endforelse
+                    </ul>
+                </div>
             </div>
+
         </div>
 
-    </div>
+        <h3>Información adicional</h3>
+        <div class="third-data">
+            <p><span>EPS:</span> {{ $residente->eps }}</p>
+            <p><span>Altura:</span> {{ $residente->altura }} cm</p>
+            <p><span>Peso:</span> {{ $residente->peso ?? 'N/A' }} kg</p>
+            <p><span>Fecha de Nacimiento:</span> {{ $residente->fecha_nacimiento }}</p>
+            <p><span>Teléfono:</span> {{ $residente->telefono }}</p>
+            <p><span>Dirección:</span> {{ $residente->direccion }}</p>
+        </div>
 
-    <h3>Información adicional</h3>
-    <div class="third-data">
-        <p><span>EPS:</span> {{ $residente->eps }}</p>
-        <p><span>Altura:</span> {{ $residente->altura }} cm</p>
-        <p><span>Peso:</span> {{ $residente->peso ?? 'N/A' }} kg</p>
-        <p><span>Fecha de Nacimiento:</span> {{ $residente->fecha_nacimiento }}</p>
-        <p><span>Teléfono:</span> {{ $residente->telefono }}</p>
-        <p><span>Dirección:</span> {{ $residente->direccion }}</p>
-    </div>
+        <h3>Diagnósticos</h3>
+        <div class="general-data-diagnostico">
+            <p>Información de diagnósticos aquí…</p>
+        </div>
 
-    <h3>Diagnósticos</h3>
-    <div class="general-data">
-        <p>Información de diagnósticos aquí…</p>
-    </div>
+        <h3>Historial clínico</h3>
+        <div class="general-data-clinico">
+            <p>Información del historial clínico aquí…</p>
+        </div>
 
-    <h3>Historial clínico</h3>
-    <div class="general-data">
-        <p>Información del historial clínico aquí…</p>
+        <h3>Signos vitales</h3>
+        <div class="general-data">
+            <p>Últimos signos vitales aquí…</p>
+        </div>
     </div>
-
-    <h3>Signos vitales</h3>
-    <div class="general-data">
-        <p>Últimos signos vitales aquí…</p>
-    </div>
-
 </div>
 
 @endsection

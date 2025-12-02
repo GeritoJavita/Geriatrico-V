@@ -150,4 +150,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const root = document.getElementById('residente-show');
+    if (!root) return;
+
+    const residenteId = root.dataset.residenteId;   // ← aquí obtienes el ID como string
+    const signosContainer = document.querySelector('.general-data');
+
+    fetch(`/residente/${residenteId}/ultimos-signos`)
+        .then(response => response.json())
+        .then(data => {
+            if (data) {
+                signosContainer.innerHTML = `
+          <p><strong>Fecha:</strong> ${data.fecha}</p>
+          <p><strong>Hora:</strong> ${data.hora}</p>
+          <p><strong>Presión Sistólica:</strong> ${data.presion_sistolica}</p>
+          <p><strong>Presión Diastólica:</strong> ${data.presion_diastolica}</p>
+          <p><strong>Temperatura:</strong> ${data.temperatura} °C</p>
+          <p><strong>Frecuencia Respiratoria:</strong> ${data.frecuencia_resp} respiraciones/min</p>
+          <p><strong>Frecuencia Cardíaca:</strong> ${data.frecuencia_card} bpm</p>
+          <p><strong>Reporte:</strong> ${data.reporte_signos || 'N/A'}</p>
+        `;
+            } else {
+                signosContainer.innerHTML = '<p>No hay signos vitales registrados.</p>';
+            }
+        })
+        .catch(() => {
+            signosContainer.innerHTML = '<p>Error cargando signos vitales.</p>';
+        });
+});
+

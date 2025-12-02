@@ -39,5 +39,9 @@ class SignosVitalesService
             ? $this->signosVitalesRepository->search($search)
             : $this->signosVitalesRepository->getAll();
     }
-    
+
+    public function listarSignosPorResidente($residenteId)
+    {
+        return $this->signosVitalesRepository->listarPorResidente($residenteId);
+    }
 }

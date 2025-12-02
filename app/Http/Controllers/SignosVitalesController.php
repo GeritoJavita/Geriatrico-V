@@ -102,12 +102,12 @@ class SignosVitalesController extends Controller
     // En SignosVitalesController
     public function ultimosSignosPorResidente($residenteId)
     {
-        $ultimosSignos = $this->signosVitalesService
+        $ultimoSigno = $this->signosVitalesService
             ->listarSignosPorResidente($residenteId)
-            ->orderBy('fecha', 'desc')
-            ->orderBy('hora', 'desc')
+            ->orderByDesc('fecha')
+            ->orderByDesc('hora')
             ->first();
 
-        return response()->json($ultimosSignos);
+        return response()->json($ultimoSigno);
     }
 }
