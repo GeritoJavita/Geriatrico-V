@@ -22,11 +22,9 @@ return new class extends Migration
             $table->double('frecuencia_card')->nullable();
             $table->string('reporte_signos')->nullable();
 
-            // Columna compatible con residente.id manual
+            $table->foreignId('empleado_id')->nullable()->constrained('empleado');
             $table->bigInteger('residente_id')->nullable();
             $table->foreign('residente_id')->references('id')->on('residente');
-            $table->bigInteger('empleado_id')->nullable();
-            $table->foreign('empleado_id')->references('id')->on('empleado');
             $table->timestamps();
         });
     }

@@ -39,4 +39,10 @@ class UsuarioService
             ? $this->usuarioRepository->search($search)
             : $this->usuarioRepository->getAll();
     }
+
+    public function obtenerUsuarioPorId($id)
+    {
+        $usuario = $this->usuarioRepository->findById($id);
+        return $usuario;
+    }
 }

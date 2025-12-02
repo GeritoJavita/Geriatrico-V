@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    notyf.success("Inicio de sesión exitoso");
-
+                   // notyf.success("Inicio de sesión exitoso");
+/*
                     setTimeout(() => {
                         addform.reset();
                         addform.classList.remove('was-validated');
@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             window.location.href = data.redirect;
                         }, 1000); 
-                    }, 2000); 
+                    }, 2000); */
+                    window.location.href = data.redirect;
                 } else {
                     notyf.error(data.message);
                     alert(data.message);

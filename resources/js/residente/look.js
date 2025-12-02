@@ -12,18 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const addForm = document.querySelector('#form-modal form');  // FORM REAL
     const submitBtn = addForm.querySelector('button[type="submit"]');
 
-    // Abrir modal
     openModal.addEventListener('click', () => {
         notyf.success('Abriendo el formulario de signos vitales...');
         modal.style.display = 'block';
     });
 
-    // Cerrar modal
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
     });
+    // Cerrar con Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            nombreUsuario.textContent = '';
+            modal.dataset.userId = '';
+        }
+    });
 
-    // Enviar formulario
+
     addForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 

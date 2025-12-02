@@ -39,4 +39,5 @@ class SignosVitalesService
             ? $this->signosVitalesRepository->search($search)
             : $this->signosVitalesRepository->getAll();
     }
+    
 }

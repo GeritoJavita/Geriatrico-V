@@ -34,7 +34,7 @@ class SignosVitalesController extends Controller
                 'reporte_signos' => 'nullable|string',
                 'residente_id' => 'required|integer|exists:residente,id',
                 'empleado_id' => 'required|integer|exists:empleado,id',
-                
+
             ]);
 
             $signosVitales = $this->signosVitalesService->crearSignosVitales($request->all());
@@ -98,5 +98,16 @@ class SignosVitalesController extends Controller
                 'message' => 'Error al eliminar signos vitales: ' . $e->getMessage()
             ]);
         }
+    }
+    // En SignosVitalesController
+    public function ultimosSignosPorResidente($residenteId)
+    {
+        $ultimosSignos = $this->signosVitalesService
+            ->listarSignosPorResidente($residenteId)
+            ->orderBy('fecha', 'desc')
+            ->orderBy('hora', 'desc')
+            ->first();
+
+        return response()->json($ultimosSignos);
     }
 }

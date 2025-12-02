@@ -16,10 +16,9 @@ class UsuarioController extends Controller
 
     public function index()
     {
-       $usuarios = $this->usuarioService->listarUsuario();
-       return view('usuario.index', compact('usuarios'));
+        $usuarios = $this->usuarioService->listarUsuario();
+        return view('usuario.index', compact('usuarios'));
     }
-
     public function store(Request $request)
     {
         try {
@@ -47,7 +46,7 @@ class UsuarioController extends Controller
     }
 
 
-      public function create()
+    public function create()
     {
         return view('usuario.create');
     }
@@ -74,6 +73,26 @@ class UsuarioController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Error al actualizar usuario: ' . $e->getMessage()
+            ]);
+        }
+    }
+    public function show($id)
+    {
+        try {
+            $usuario = $this->usuarioService->obtenerUsuarioPorId($id);
+
+            if (!$usuario) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Usuario no encontrado'
+                ], 404);
+            }
+
+            return view('usuario.look', compact('usuario'));
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al cargar usuario: ' . $e->getMessage()
             ]);
         }
     }

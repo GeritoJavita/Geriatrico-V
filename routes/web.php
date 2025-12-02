@@ -59,6 +59,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('alergia', AlergiaController::class)->middleware('can:dashboard_admin');
     Route::resource('patologia', PatologiaController::class)->middleware('can:dashboard_admin');
     Route::resource('signos_vitales', SignosVitalesController::class)->middleware('can:dashboard_admin');
+    //Ruta personalizada adicional
+    Route::get(
+        '/residente/{id}/ultimos-signos', [SignosVitalesController::class, 
+        'ultimosSignosPorResidente']);
     Route::resource('historia_clinica', HistoriaClinicaController::class)->middleware('can:dashboard_admin');
     Route::resource('residente', ResidenteController::class)->middleware('can:dashboard_admin');
     //Ruta personalizada adicional

@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('actividades', 45)->nullable();
             $table->string('notas_enferme', 45)->nullable();
             $table->string('estado_general', 45)->nullable();
-            $table->bigInteger('empleado_id')->nullable();
-            $table->foreign('empleado_id')->references('id')->on('empleado');
+            $table->foreignId('empleado_id')->nullable()->constrained('empleado');
             $table->bigInteger('residente_id')->nullable();
             $table->foreign('residente_id')->references('id')->on('residente');
 
